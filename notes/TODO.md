@@ -1,21 +1,18 @@
 TODO
 ====
 
-  Embrace. Embolden. Empower
-            Embody?
-            
+  Embrace. Embody. Empower
+
   Action . Feeling  . Thought = Behavior
-            
+
   The cohesiveness of Lisp Machines
   The extensibility of Emacs
   The polish of Apple
   The power of open source
 
-  GOAL is build structures more fluidly
-  * Create list, enter strings, convert some to symbols, eval
-  * +Pixel example to demonstrate power
-  
-  REPL:
+  * binds(modes) = worker/mode
+  * cmds = worker/cmd
+  * ops = worker/ops
 
   * Rewrite pointer to store any/reg
     * Refactor (after tests)
@@ -26,17 +23,19 @@ TODO
       * Mov trace to point
       * refactor con/set to not req any
     * base cmds
-      * str: y
-      * list: y
-      * bsp: 
-      * del: 
+      * str: DONE
+      * list: DONE
+      * bsp: WIP
+      * del:
       * alt:
       * line: skip...
     * atomic ops
     * repl ops
     * line ops
     * cua ops
-      
+
+  * Remove line functionality (lots of work)
+
   * Rewrite tests [Weekend]
     * Dynamic tests
     * Randomize ops: permutations + double
@@ -46,19 +45,19 @@ TODO
   * Camera Tracking
     * Create cmds to center view, fit view etc
     * Mov to item - def is align to left side of screen
-    * Either zoom out or move newline  
-  
+    * Either zoom out or move newline
+
   ---
-  
+
   * Lists can be rotated to simulate scrolling
     * Requires redrawing entire list...
     * Frustrum culling
-            
+
   * Soft wrap list
     * Track pos
     * When limit reached, mov nl
     * Each list will have a length
-    
+
   * Optimize display updates
     * Decouple upd-tree from command
     * Update only if in view
@@ -79,12 +78,12 @@ TODO
             * Fork
 
   ---
-                    
+
   * Cam
     * Cap zooming
     * Camera needs to move with content like when entering a newline
       * Requires unproject to test if coord is in the viewport
-      * When a new item is entered, check its bnds against the view bounds      
+      * When a new item is entered, check its bnds against the view bounds
 
   * Pointer System
     * System
@@ -94,9 +93,9 @@ TODO
         * (p . NIL) = until EOL
         * (p . T) = until Ptr
       * -> atom = single
-  
+
   * Proportional fonts
-   
+
   * Lazy load glyphs
     * Do later when msgs are refactored
     * Render loads tex
@@ -110,8 +109,8 @@ TODO
       * glyph hinting
       * subpixel antialiasing
       * less necessary with high dpi screens
-    
-    
+
+
   * Test multiple workers
     * Need data sync on model side to broadcast updates
 
@@ -124,16 +123,16 @@ TODO
       * Allows us to create screens/viewports
     * Implement screenshot
       * glReadPixels
-      
+
   * Basic animations
     * Easing functions
     * Fades
     * Use compute shader on large amount
       * For demo max verts
-      
+
   * Instead of drawing lines to connect nodes, draw generic grid in bg
   to guide user
-    
+
   * Map keys to grid on screen
     * 26 squares if using plain alphabet
     * User can use keys to manuever
@@ -143,7 +142,7 @@ TODO
   * Error Handling
     * Set * Err to (quit)
     * On error, print msg and return to top-level
-  
+
 
 LATER:
 
@@ -232,7 +231,7 @@ LATER:
 
   * Note 32 MB = 8 ms to mark/sweep
     * = 2,000,000 cons cells -> Test this with loop/cons/heap
-    
+
 ## OTHER STUFF
 
 * Benchmark/Profile
@@ -262,7 +261,7 @@ Particle maximizes the following principles:
 
 These principles are shared with the underlying programming language (PicoLisp)
 to create a consistent *understandable* system.
-  
+
 ## The Interface
 
 Personal Extensions

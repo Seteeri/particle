@@ -19,54 +19,54 @@
             "/particle/c/socket.l"
             "/particle/c/ksd.l"
             "/particle/c/xkbcommon.l"
-            
+
             "/particle/misc.l"
-            
+
             "/particle/theme/selenized.l"
-            
+
             "/particle/ipc/ipc.l"
 
             "/particle/prot/conn.l"
             "/particle/prot/send.l"
             "/particle/prot/recv.l"
             "/particle/prot/obj.l"
-            
+
             "/particle/font/metrics.l"
             "/particle/font/font.l"
-            
+
             "/particle/ctrl/xkb.l"
-            
-            "/particle/worker/debug.l"            
+
+            "/particle/worker/debug.l"
             "/particle/worker/conn.l"
-            "/particle/worker/cursor.l"   
+            "/particle/worker/cursor.l"
             "/particle/worker/projview.l"
             "/particle/worker/idx.l"
-                        
+
             "/particle/worker/pointer/pointer.l"
             "/particle/worker/pointer/p.l"
             "/particle/worker/pointer/ln.l"
             "/particle/worker/pointer/pt.l"
             "/particle/worker/pointer/ref.l"
-                        
+
             "/particle/worker/mode/txt/an.l"
             "/particle/worker/mode/txt/op.l"
 
             "/particle/worker/mode/cmd/op.l"
-            
+
             "/particle/worker/vertex/make.l"
             "/particle/worker/vertex/vertex.l"
-            
+
             "/particle/worker/cmd/atom.l"
-            "/particle/worker/cmd/ptr.l"                                
+            "/particle/worker/cmd/ptr.l"
             "/particle/worker/cmd/pair.l"
-            "/particle/worker/cmd/repl.l"            
+            "/particle/worker/cmd/repl.l"
             "/particle/worker/cmd/line.l"
             "/particle/worker/cmd/conv.l"
             "/particle/worker/cmd/cam.l"
-            
+
             "/particle/worker/point/gen.l"
             "/particle/worker/point/point.l"
-            "/particle/worker/point/line.l"            
+            "/particle/worker/point/line.l"
             "/particle/worker/point/pair.l"
             "/particle/worker/point/atom.l"
             "/particle/worker/point/num.l"
@@ -76,40 +76,40 @@
             "/particle/worker/point/sym/int.l"
             "/particle/worker/point/sym/str.l"
             "/particle/worker/point/sym/ext.l"
-                                
-            "/particle/worker/ops/align.l"            
+
+            "/particle/worker/ops/align.l"
             "/particle/worker/ops/lay.l"
             "/particle/worker/ops/bsp.l"
             "/particle/worker/ops/del.l"
             "/particle/worker/ops/line.l"
-            "/particle/worker/ops/alt-lay.l"       
+            "/particle/worker/ops/alt-lay.l"
             "/particle/worker/ops/alt-reg.l"
             "/particle/worker/ops/conv.l"
-            
+
             "/particle/worker/ops/str/mak.l"
             "/particle/worker/ops/str/pair.l"
             "/particle/worker/ops/str/atom.l"
-            
+
             "/particle/worker/ops/pair/mak.l"
             "/particle/worker/ops/pair/pair.l"
             "/particle/worker/ops/pair/atom.l"
-            
+
             # MOV -> TEST.L
-            
+
             "/particle/test/atom/lst.l"
             "/particle/test/atom/str.l"
-            "/particle/test/atom/alt.l"
+            #"/particle/test/atom/alt.l"
             "/particle/test/atom/del.l"
             "/particle/test/atom/bsp.l"
             #"/particle/test/atom/nl.l"
-            
+
             "/particle/test/pair/lst.l"
             "/particle/test/pair/str.l"
             "/particle/test/pair/alt.l"
             "/particle/test/pair/del.l"
             "/particle/test/pair/bsp.l"
             #"/particle/test/pair/nl.l"
-            
+
             "/particle/test/test.l"))
 
 
@@ -153,84 +153,84 @@
                    (pack "/tmp/part-work-" *i-proc ".sock") 'ipc~block serv-cli acpt-cli
                    (list (list *uds-ctrl T serv-ctrl   "CONTROL")
                          (list *uds-rend T serv-rend "RENDER"))))
-                         
+
   (reg-conns *ipc (pack NAME-PID "-" *i-proc))
-  
+
   ############################################
-    
+
   (setq *projview (req-recv-pv *ipc
                                (ipc~fd> *ipc "CONTROL")
                                NIL
                                0))
-                               
+
   (req-send *ipc *projview)
-  
-  (setq *xkb (new '(+Xkb)))  
-  
+
+  (setq *xkb (new '(+Xkb)))
+
   (prinl-info "init-worker" (pack "Heap: " (heap)))
   (gc 48)
   (setq *vert-offs
         (make
-          (for I *verts-max 
+          (for I *verts-max
             (link (vert-off-gl I)))))
-  (prinl-info "init-worker" (pack "Heap: " (heap)))  
-  
+  (prinl-info "init-worker" (pack "Heap: " (heap)))
+
   #########################
-  
+
   (ld-modes)
-    
+
   (def-pts)
-  
+
   (send-msg *ipc (ipc~fd> *ipc "CONTROL") "(rdy)")
-  
+
   (prinl-info "init-worker" "Starting epoll...")
-        
+
   (loop (ipc~poll> *ipc -1)))
 
-  
-(de ld-modes ()  
-  
+
+(de ld-modes ()
+
   # dispatch-kb will lup key in binds
   # so to set mode, change value of binds
-  
+
   # TODO:
-  # - Rename *binds -> *modes  
+  # - Rename *binds -> *modes
   # - Make binds a list which contains all the modes
   # - Dispatch-kb will use car of *binds
   #   - If not found, then try static binds
 
   # Mov loader functions to modes
-  
+
   # Load txt
-  (let L (sort 
+  (let L (sort
            (append
               (list-binds-txt-ascii *binds-txt-latin-1)
               (list-binds-txt-num *binds-txt-num)
               (list-binds-txt-ops *binds-txt-ops)))
     (balance '*mode-txt L))
-    
+
   # Load cmd
-  (balance '*mode-cmd 
+  (balance '*mode-cmd
     (sort (list-binds-cmd *binds-cmd))))
-  
+
 
 (de def-pts ()
-  
+
   #{
-    
+
     Proccess number (Worker)
     - Namespace list
       - Particles list
         - *...
-    
+
     Create one for the other procs?
     - They would all have to draw also
     - Then share res between procs in database
-    
+
   }#
-  
+
   #{
-  
+
     : (char "→")
     -> 8594
     : (char "←")
@@ -239,25 +239,25 @@
     -> 8593
     : (char "↓")
     -> 8595
-    
+
     : (char (hex "2607"))
-    
-  }#  
+
+  }#
 
   (let ((X Y) *cur)
-    
+
     (setq *ptr (new '(+Pointer)))
     (put *ptr 'ref NIL)
-        
+
     (let (Pt-Sta (gen-sym-exp '*start 'x T T)
           Pt-Ptr (gen-ptr     '*ptr "↓" *selb-yellow)
           Pt-Txt (gen-ptr     '*txt "↓" *selb-yellow)
           Pt-Cmd (gen-ptr     '*cmd "↓" *selb-yellow)
           Pt-D   (gen-point   '⇲      'x))
-      
+
       (setq *po-ptr-txt Pt-Txt
             *po-ptr-cmd Pt-Cmd)
-      
+
       (put (get Pt-Sta 'b) 'line (new '(+Line)))
       (mov-cur 0.0 0.0)
       (lay-pt-start '*start '*start T T)
@@ -265,47 +265,45 @@
       (del> (get Pt-Ptr 'b)) (put Pt-Ptr 'b T)
       (del> (get Pt-Txt 'b)) (put Pt-Txt 'b T)
       (del> (get Pt-Cmd 'b)) (put Pt-Cmd 'b T)
-      
+
       (setq *modes *mode-cmd)
       (put *ptr 'pt Pt-Cmd)
-      
+
       # Upd +Point on change
       (set-ln-n> *ptr Pt-Sta)
       (pt> *ptr '*start '*start T)
-      
-      (mov-cur 0.0 1.0)     
-      # Call this through *ptr method      
+
+      (mov-cur 0.0 1.0)
+      # Call this through *ptr method
       (top> Pt-Sta)
       (draw> *ptr)
-    
+
       (mov-cur 0.0 0.0)
       (adj-cur-y 3.0)
       (col-verts> Pt-D *selb-yellow 1.0)
       (lay-pt-start '⇲ '⇲ T T)
-      
-      (when NIL
-        (run-tests)
-        #(quit "Finished tests")
-        )
-                
+
+      #(when NIL
+      #  (run-tests))
+
       T)))
 
 
 (de del-start-val (Pt-Sta Draw)
-    
-  ~(assert (not (get Pt-Sta 'line 'n)))  
-    
+
+  ~(assert (not (get Pt-Sta 'line 'n)))
+
   (del> (if (get Pt-Sta 'b)
-            @ 
+            @
             (lup-pt *start))
         T T)
   (con> Pt-Sta NIL (gen-point NIL 'x))
 
   (put (get Pt-Sta 'b) 'line (new '(+Line)))
-  
+
   (pt> *ptr '*start 'b NIL)
   (put *ptr 'lns (list Pt-Sta))
-    
+
   (when Draw
     (setq *cur (list 0.0 0.0 0.0))
     (lay-pt-start '*start '*start T T)
@@ -322,15 +320,15 @@
   (let (Msg (recv-msg *ipc Sock)
         Dat (car (str Msg))
         Name (car Dat))
-        
+
     # recv-msg will return data or NIL
     # This means sending NIL will disconnect the client, like EOF
     (if Msg
-        
+
         (prog
-      
+
           (case Name
-          
+
             (KEYBOARD-KEY
               (dispatch-kb Dat))
 
@@ -344,7 +342,7 @@
                           (format (car U) *Scl)
                           (format (cadr U) *Scl)
                           (format (caddr U) *Scl)))))
-            
+
             ((TOUCH-UP
               TOUCH-DOWN
               TOUCH-FRAME
@@ -374,11 +372,11 @@
 
           # Send ready when complete
           (send-msg *ipc Sock "(rdy)"))
-          
+
         (disconn-conn *ipc Sock))))
 
-        
-(de send-msg-rend (M) (send-msg *ipc (ipc~fd> *ipc "RENDER") M))        
+
+(de send-msg-rend (M) (send-msg *ipc (ipc~fd> *ipc "RENDER") M))
 
 
 (de serv-rend (Sock)
@@ -386,10 +384,10 @@
   #(println 'serv-rend)
 
   (let Msg (recv-msg *ipc Sock)
-  
+
     (anim-rot-z-cdr)
     (send-msg-rend "T")
-  
+
     (unless Msg
       (disconn-conn *ipc Sock))))
 
@@ -444,32 +442,32 @@
           (link ksd~Super-L))
         (when (= (cdr (assoc ksd~Super-R (: states))) xkb~KEY-DOWN)
           (link ksd~Super-R))))
-    (link Ks)))       
-              
+    (link Ks)))
+
 
 (def 'PI2 (+ PI PI))
 (def '*rot-z 0.0)
 (de anim-rot-z-cdr ()
 
   (let? Po (get *ptr 'pt 'a)
-    
+
     (with Po
-    
+
       (let Vert (car (: verts))
-        
+
         (with Vert
-                   
+
           (inc '*rot-z 0.03)
           (when (> *rot-z PI2) (setq *rot-z 0.0))
-          
+
           # Scale from origin (left bottom)
           # Translate origin to center
           # Rotate rel to center
           # Translate back to origin
-          # Translate to final pos          
-          
+          # Translate to final pos
+
           (let Tra (mat4-tra (: pos))
-          
+
             (=: mm
                 (mat4-mul@
                   Tra
@@ -483,10 +481,10 @@
                   #(mat4-ry (cadr (: rota)))
                   #(mat4-rx (car (: rota)))
                   (mat4-sca (: sca))))))
-                
+
         (req-send *ipc Vert)))))
-              
-              
+
+
 (de main ()
   (bind-args)
   (init-worker))

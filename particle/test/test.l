@@ -6,14 +6,14 @@
   Verify color (first vert)
   ...and pointer?
   Verify *start also
-  
+
   Screenshot window for each test
   for visual verification
-  
+
   Refactor so auto update standards:
   * ver
   * std
-  
+
 }#
 
 
@@ -33,7 +33,7 @@
           (when (: line)
             (list (when (get @ 'p) T)
                   (when (get @ 'n) T))))))
-    
+
 
 (de comp-part (X I)
   (let (A (props-part X)
@@ -45,27 +45,27 @@
             I))
     }#
     E))
-    
-    
+
+
 (de get-dfs-struct ()
   # build flattened list of origins
   # depth-first search
   # order/struct should match
-  
+
   # poss verify all props, incl line
   # note, property list is arbitrary order
   # sort than do =
-  
-  
+
+
   (let (O ()
         C (list *start))
-        
+
     (while (setq X (pop 'C))
-              
+
       (if (isa '(+Point) X)
-      
+
           (push 'O (props-part X))
-          
+
           (let (Px (lup-pt X)
                 A (car X)
                 B (cdr X))
@@ -77,16 +77,16 @@
 
 
 (de ver-dfs-struct (I)
-  
+
   (let (O ()
         C (list *start))
-        
+
     (while (setq X (pop 'C))
-              
+
       (if (isa '(+Point) X)
-      
+
           (push 'O (comp-part X (pop 'I)))
-          
+
           (let (Px (lup-pt X)
                 A (car X)
                 B (cdr X))
@@ -96,7 +96,7 @@
               (if (atom A) (get Px 'a) A)))))
     O))
 
-    
+
 (de ver-start (Nm I)
   (let (P (not I)
         I (if I @ (get-dfs-struct))
@@ -111,7 +111,7 @@
     (prinl)
     F))
 
-          
+
 # POINTER
 
 (de run-tests ()
@@ -119,7 +119,10 @@
   # Read test files, run any fns
 
   (run-tests-dir "atom")
-  (run-tests-dir "pair"))
+
+  (run-tests-dir "pair")
+
+  )
 
 
 (de run-tests-dir (Nm)

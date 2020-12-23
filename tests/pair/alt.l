@@ -1,0 +1,759 @@
+$177647666411342
+$177647666411342
+$177647666411342
+$177647666464152
+(de alt-reg-x-pair-a-a NIL
+   (cmd-ptr-right)
+   (cmd-make-char (char "c"))
+   (cmd-ptr-left)
+   (cmd-alt-reg)
+   (cmd-ptr-down)
+   (cmd-make-char (char "d"))
+   (cmd-ptr-up)
+   (cmd-alt-reg)
+   (ver-start
+      'alt-reg-x-pair-a-a
+      '(((+Pair)
+            ("c" . "d")
+            x
+            T
+            T
+            NIL
+            (4214357 0 0)
+            T
+            (1204102 1204102)
+            (NIL NIL) )
+         ((+Str)
+            "c"
+            x
+            NIL
+            NIL
+            T
+            (4214357 -1204102 0)
+            T
+            (0 0)
+            NIL )
+         ((+Str)
+            "d"
+            x
+            NIL
+            NIL
+            T
+            (5418459 0 0)
+            T
+            (0 1204102)
+            NIL ) ) ) )
+
+$177647666501124
+$177647666501124
+$177647666501124
+(de alt-reg-x-pair-a-px NIL
+   (cmd-ptr-right)
+   (cmd-make-char (char "c"))
+   (cmd-make-char (char "d"))
+   (cmd-ptr-left)
+   (cmd-ptr-left)
+   (cmd-alt-reg)
+   (ver-start
+      'alt-reg-x-pair-a-px
+      '(((+Pair)
+            (("d") . "c")
+            y
+            NIL
+            T
+            NIL
+            (4214357 0 0)
+            T
+            (3612306 3612306)
+            (NIL T) )
+         ((+Pair)
+            ("d")
+            x
+            T
+            T
+            NIL
+            (5418459 0 0)
+            T
+            (2408204 1204102)
+            (NIL NIL) )
+         ((+Str)
+            "d"
+            x
+            NIL
+            NIL
+            T
+            (5418459 -1204102 0)
+            T
+            (0 0)
+            NIL )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (6622561 0 0)
+            T
+            (1204102 1204102)
+            NIL )
+         ((+Str)
+            "c"
+            x
+            NIL
+            NIL
+            T
+            (4214357 -3612306 0)
+            T
+            (0 0)
+            (T NIL) ) ) ) )
+
+$177647666573155
+$177647666573155
+(de alt-reg-x-pair-a-py NIL
+   (cmd-ptr-right)
+   (cmd-make-char (char "c"))
+   (cmd-make-pair-y)
+   (cmd-ptr-left)
+   (cmd-alt-reg)
+   (ver-start
+      'alt-reg-x-pair-a-py
+      '(((+Pair)
+            ((NIL) . "c")
+            y
+            NIL
+            T
+            NIL
+            (4214357 0 0)
+            T
+            (3612306 4816408)
+            (NIL T) )
+         ((+Pair)
+            (NIL)
+            y
+            T
+            T
+            NIL
+            (5418459 0 0)
+            T
+            (2408204 2408204)
+            (NIL NIL) )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (6622561 0 0)
+            T
+            (1204102 0)
+            (NIL NIL) )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (5418459 -2408204 0)
+            T
+            (1204102 0)
+            (T NIL) )
+         ((+Str)
+            "c"
+            x
+            NIL
+            NIL
+            T
+            (4214357 -4816408 0)
+            T
+            (0 0)
+            (T NIL) ) ) ) )
+
+$177647666672323
+$177647666713702
+$177647666713702
+(de alt-reg-y-pair-a-px NIL
+   (cmd-ptr-right)
+   (cmd-make-pair-y)
+   (cmd-ptr-down)
+   (cmd-make-char (char "c"))
+   (cmd-ptr-left)
+   (cmd-ptr-up)
+   (cmd-alt-reg)
+   (ver-start
+      'alt-reg-y-pair-a-px
+      '(((+Pair)
+            (("c"))
+            y
+            NIL
+            T
+            NIL
+            (4214357 0 0)
+            T
+            (3612306 3612306)
+            (NIL T) )
+         ((+Pair)
+            ("c")
+            x
+            T
+            T
+            NIL
+            (5418459 0 0)
+            T
+            (2408204 1204102)
+            (NIL NIL) )
+         ((+Str)
+            "c"
+            x
+            NIL
+            NIL
+            T
+            (5418459 -1204102 0)
+            T
+            (0 0)
+            NIL )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (6622561 0 0)
+            T
+            (1204102 1204102)
+            NIL )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (4214357 -3612306 0)
+            T
+            (1204102 0)
+            (T NIL) ) ) ) )
+
+$177647666765146
+$177647667006526
+(de alt-reg-y-pair-a-py NIL
+   (cmd-ptr-right)
+   (cmd-make-pair-y)
+   (cmd-ptr-down)
+   (cmd-make-pair-y)
+   (cmd-ptr-up)
+   (cmd-alt-reg)
+   (ver-start
+      'alt-reg-y-pair-a-py
+      '(((+Pair)
+            ((NIL))
+            y
+            NIL
+            T
+            NIL
+            (4214357 0 0)
+            T
+            (3612306 4816408)
+            (NIL T) )
+         ((+Pair)
+            (NIL)
+            y
+            T
+            T
+            NIL
+            (5418459 0 0)
+            T
+            (2408204 2408204)
+            (NIL T) )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (6622561 0 0)
+            T
+            (1204102 0)
+            (NIL NIL) )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (5418459 -2408204 0)
+            T
+            (1204102 0)
+            (T NIL) )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (4214357 -4816408 0)
+            T
+            (1204102 0)
+            (T NIL) ) ) ) )
+
+$177647667064340
+$177647667101276
+(de alt-reg-y-pair-px-a NIL
+   (cmd-ptr-right)
+   (cmd-make-pair-y)
+   (cmd-ptr-right)
+   (cmd-make-pair-y)
+   (cmd-ptr-left)
+   (cmd-alt-reg)
+   (ver-start
+      'alt-reg-y-pair-px-a
+      '(((+Pair)
+            (NIL NIL)
+            y
+            T
+            NIL
+            NIL
+            (4214357 0 0)
+            T
+            (3612306 3612306)
+            (NIL T) )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (5418459 0 0)
+            T
+            (1204102 0)
+            (NIL NIL) )
+         ((+Pair)
+            (NIL)
+            x
+            T
+            T
+            NIL
+            (4214357 -2408204 0)
+            T
+            (3612306 1204102)
+            (T NIL) )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (4214357 -3612306 0)
+            T
+            (1204102 0)
+            NIL )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (6622561 -2408204 0)
+            T
+            (1204102 1204102)
+            NIL ) ) ) )
+
+$177647667162255
+(de alt-reg-y-pair-py-a NIL
+   (cmd-ptr-right)
+   (cmd-make-pair-y)
+   (cmd-make-pair-y)
+   (cmd-alt-reg)
+   (ver-start
+      'alt-reg-y-pair-py-a
+      '(((+Pair)
+            (NIL NIL)
+            y
+            T
+            NIL
+            NIL
+            (4214357 0 0)
+            T
+            (2408204 4816408)
+            (NIL T) )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (5418459 0 0)
+            T
+            (1204102 0)
+            (NIL NIL) )
+         ((+Pair)
+            (NIL)
+            y
+            T
+            T
+            NIL
+            (4214357 -2408204 0)
+            T
+            (0 0)
+            (T NIL) )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (5418459 -2408204 0)
+            T
+            (1204102 0)
+            (NIL NIL) )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (4214357 -4816408 0)
+            T
+            (1204102 0)
+            (T NIL) ) ) ) )
+
+$177647667255377
+$177647667272334
+$177647667276756
+$177647667276756
+(de alt-reg-y-pair-px-px NIL
+   (cmd-ptr-right)
+   (cmd-make-pair-y)
+   (cmd-ptr-right)
+   (cmd-make-pair-y)
+   (cmd-ptr-left)
+   (cmd-ptr-down)
+   (cmd-make-char (char "c"))
+   (cmd-ptr-left)
+   (cmd-ptr-up)
+   (cmd-alt-reg)
+   (ver-start
+      'alt-reg-y-pair-px-px
+      '(((+Pair)
+            (("c") NIL)
+            y
+            NIL
+            NIL
+            NIL
+            (4214357 0 0)
+            T
+            (3612306 4816408)
+            (NIL T) )
+         ((+Pair)
+            ("c")
+            x
+            T
+            T
+            NIL
+            (5418459 0 0)
+            T
+            (2408204 1204102)
+            (NIL NIL) )
+         ((+Str)
+            "c"
+            x
+            NIL
+            NIL
+            T
+            (5418459 -1204102 0)
+            T
+            (0 0)
+            NIL )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (6622561 0 0)
+            T
+            (1204102 1204102)
+            NIL )
+         ((+Pair)
+            (NIL)
+            x
+            T
+            T
+            NIL
+            (4214357 -3612306 0)
+            T
+            (3612306 1204102)
+            (T NIL) )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (4214357 -4816408 0)
+            T
+            (1204102 0)
+            NIL )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (6622561 -3612306 0)
+            T
+            (1204102 1204102)
+            NIL ) ) ) )
+
+$177647667402102
+$177647667417040
+$177647667423462
+(de alt-reg-y-pair-px-py NIL
+   (cmd-ptr-right)
+   (cmd-make-pair-y)
+   (cmd-ptr-right)
+   (cmd-make-pair-y)
+   (cmd-ptr-left)
+   (cmd-ptr-down)
+   (cmd-make-pair-y)
+   (cmd-ptr-up)
+   (cmd-alt-reg)
+   (ver-start
+      'alt-reg-y-pair-px-py
+      '(((+Pair)
+            ((NIL) NIL)
+            y
+            NIL
+            NIL
+            NIL
+            (4214357 0 0)
+            T
+            (3612306 6020510)
+            (NIL T) )
+         ((+Pair)
+            (NIL)
+            y
+            T
+            T
+            NIL
+            (5418459 0 0)
+            T
+            (2408204 2408204)
+            (NIL T) )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (6622561 0 0)
+            T
+            (1204102 0)
+            (NIL NIL) )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (5418459 -2408204 0)
+            T
+            (1204102 0)
+            (T NIL) )
+         ((+Pair)
+            (NIL)
+            x
+            T
+            T
+            NIL
+            (4214357 -4816408 0)
+            T
+            (3612306 1204102)
+            (T NIL) )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (4214357 -6020510 0)
+            T
+            (1204102 0)
+            NIL )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (6622561 -4816408 0)
+            T
+            (1204102 1204102)
+            NIL ) ) ) )
+
+$177647667533140
+$177647667576477
+(de alt-reg-y-pair-py-py NIL
+   (cmd-ptr-right)
+   (cmd-make-pair-y)
+   (cmd-make-pair-y)
+   (cmd-ptr-down)
+   (cmd-make-pair-y)
+   (cmd-ptr-up)
+   (cmd-alt-reg)
+   (ver-start
+      'alt-reg-y-pair-py-py
+      '(((+Pair)
+            ((NIL) NIL)
+            y
+            NIL
+            NIL
+            NIL
+            (4214357 0 0)
+            T
+            (3612306 7224612)
+            (NIL T) )
+         ((+Pair)
+            (NIL)
+            y
+            T
+            T
+            NIL
+            (5418459 0 0)
+            T
+            (2408204 2408204)
+            (NIL T) )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (6622561 0 0)
+            T
+            (1204102 0)
+            (NIL NIL) )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (5418459 -2408204 0)
+            T
+            (1204102 0)
+            (T NIL) )
+         ((+Pair)
+            (NIL)
+            y
+            T
+            T
+            NIL
+            (4214357 -4816408 0)
+            T
+            (0 0)
+            (T NIL) )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (5418459 -4816408 0)
+            T
+            (1204102 0)
+            (NIL NIL) )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (4214357 -7224612 0)
+            T
+            (1204102 0)
+            (T NIL) ) ) ) )
+
+$177647667661007
+$177647667724354
+$177647667724354
+(de alt-reg-y-pair-py-px NIL
+   (cmd-ptr-right)
+   (cmd-make-pair-y)
+   (cmd-make-pair-y)
+   (cmd-ptr-down)
+   (cmd-make-char (char "c"))
+   (cmd-ptr-left)
+   (cmd-ptr-up)
+   (cmd-alt-reg)
+   (ver-start
+      'alt-reg-y-pair-py-px
+      '(((+Pair)
+            (("c") NIL)
+            y
+            NIL
+            NIL
+            NIL
+            (4214357 0 0)
+            T
+            (3612306 6020510)
+            (NIL T) )
+         ((+Pair)
+            ("c")
+            x
+            T
+            T
+            NIL
+            (5418459 0 0)
+            T
+            (2408204 1204102)
+            (NIL NIL) )
+         ((+Str)
+            "c"
+            x
+            NIL
+            NIL
+            T
+            (5418459 -1204102 0)
+            T
+            (0 0)
+            NIL )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (6622561 0 0)
+            T
+            (1204102 1204102)
+            NIL )
+         ((+Pair)
+            (NIL)
+            y
+            T
+            T
+            NIL
+            (4214357 -3612306 0)
+            T
+            (0 0)
+            (T NIL) )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (5418459 -3612306 0)
+            T
+            (1204102 0)
+            (NIL NIL) )
+         ((+Nil)
+            NIL
+            x
+            NIL
+            NIL
+            T
+            (4214357 -6020510 0)
+            T
+            (1204102 0)
+            (T NIL) ) ) ) )
+
