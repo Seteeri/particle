@@ -10,7 +10,7 @@
    +--------+-----------+-----------+
    |        |           |           |
   NIL   Internal    Transient    External
-  
+
 }#
 
 
@@ -23,7 +23,7 @@
   (super Any
          Lay
          A B)
-  (let ((Verts W) 
+  (let ((Verts W)
           (make-vert-atm Any
                          (get-col-type Any)
                          (caddr (get '+Vertex 'chs-pair))))
@@ -65,13 +65,13 @@
             (prog (mov-cur-abv This)  This))
         (prog (mov-cur-abv (: c)) (: c)))
     }#
-    
+
     (if (and *ptr-on-car
              (or (lay-y?> (: c))
                  (is-cdr?> This)))
         (prog (mov-cur-abv This)  This)
         (prog (mov-cur-abv (: c)) (: c)))
-    
+
     (set-on-car)))
 
 
@@ -80,21 +80,21 @@
   (adj-cur-y)
   This)
 
-  
+
 (dm lay> ()
   (lay-cur> This)
   NIL)
 
-  
+
 (dm del> (A B)
-  
+
   (for Vert (: verts) (del> Vert)))
 
 #{
 (dm con-pair-str> (Pt-Pair Str)
   (if (reg-a?> *ptr)
       (if (lay-y?> Pt-Pair)
-          (mak-str-y-a Str)
-          (mak-str-x-a Str 'a))
-      (mak-str-x-b Str)))
-}#      
+          (make-str-y-a Str)
+          (make-str-x-a Str 'a))
+      (make-str-x-b Str)))
+}#

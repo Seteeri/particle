@@ -1,24 +1,24 @@
-(de mak-str-x-a (Str Reg-C Pt-B Pt-C)
+(de make-str-x-a (Str Reg-C Pt-B Pt-C)
 
-  (println 'mak-str-x-a)
-  
+  (println 'make-str-x-a)
+
   (let (B (get Pt-B 'any)
         Pt-Str (gen-point Str 'x NIL T))
-    
+
     (if (= Reg-C 'a)
         (set> Pt-B Str Pt-Str T)
         (con> Pt-B Str Pt-Str T))
-    
+
     (when (get Pt-C 'line)
       (mov-line Pt-C Pt-Str)
       (lns> *ptr))
     (set-ln-n> *ptr Pt-Str)
-    
+
     # use pt to col ref also
     (pt> *ptr B Reg-C T T)
-    
+
     (lay-*start)
-    
+
     # Move to next car
     (when (and (pair B)
                (pair (cdr B))
@@ -28,17 +28,17 @@
       (sub> *ptr T))))
 
 
-(de mak-str-x-b (Str Pt-B Pt-C)
-  (println 'mak-str-x-b)
-  #(mak-str-x-a Str 'b Pt-B Pt-C)
+(de make-str-x-b (Str Pt-B Pt-C)
+  (println 'make-str-x-b)
+  #(make-str-x-a Str 'b Pt-B Pt-C)
   (con-b-pair-x Str Pt-B Pt-C))
-        
-        
-(de mak-str-y-a (Str Pt-B Pt-C)
-  (println 'mak-str-y-a)
+
+
+(de make-str-y-a (Str Pt-B Pt-C)
+  (println 'make-str-y-a)
   (con-a-pair-x Str Pt-B Pt-C))
 
-    
-(de mak-str-y-b (Str Pt-B Pt-C)
-  (println 'mak-str-y-b)
+
+(de make-str-y-b (Str Pt-B Pt-C)
+  (println 'make-str-y-b)
   (con-b-pair-x Str Pt-B Pt-C))
