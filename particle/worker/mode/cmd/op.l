@@ -6,7 +6,7 @@
       * Purpose: simulate typing text
       * ASCII = pair/sym
       * Enter = make newline and +Line
-    * Cmd
+    * Cmd (non str sym fns)
       * Diff sectors on kb have diff functionality
 
     * Changing mode will change bindings
@@ -31,45 +31,68 @@
 
   '(((ksd~Tab) cmd-chg-mode)
 
-    # DEBUG
-    ((ksd~Control-L ksd~Return)    cmd-print-ptr)
-    ((ksd~Control-L ksd~BackSpace) cmd-reset-start)
-
     ((ksd~Alt-L ksd~Tab) cmd-make-char)
     ((ksd~Alt-R ksd~Tab) cmd-make-char)
+    ((ksd~w)             cmd-make-nil)
     ((ksd~BackSpace)     bsp-pt)
-    ((ksd~Delete)        del-pt)))
+    ((ksd~Delete)        del-pt)
+
+    # DEBUG
+    ((ksd~Control-L ksd~Return)    cmd-print-ptr)
+    ((ksd~Control-L ksd~BackSpace) cmd-reset-start)))
 
 
 (def '*binds-cmd-pair
 
-  ######
-  # Pair
-
   '(((ksd~q) make-pair-y)
-    ((ksd~w) cmd-make-nil)
-    ((ksd~f) alt-reg) # sel atom
-    ((ksd~p) alt-lay) # sel pair (atom will get pair)
+    ((ksd~f) alt-reg)
+    ((ksd~p) alt-lay)
 
     # Shifts
     #((ksd~r) cmd-rot-r)
     #((ksd~t) cmd-rot-l)
     #((ksd~y) cmd-flip/rev)
 
-    # split list into two or n
-    # append/conc lists in list or first n
-    # glue in list or first n
-    # flatten = append recursed
-
     ))
+
+
+(def '*binds-cmd-atom
+
+  # Atom <-> List
+  # * pack/glue ""
+  #   list -> str
+  # * chop/split " "
+  #   str  -> list
+
+  # Str <-> Atom
+  # * sym/intern:   str -> sym
+  # * str/name,sym: sym -> str
+  # * num/format:   str <-> num
+
+  '(((ksd~n) cmd-conv)
+    ((ksd~e) cmd-chop)))
+
+
+(def '*binds-cmd-repl
+
+  ######
+  # Str/Code <-> Any
+  # Any <-> Any
+
+  # cmd-rd = str -> any
+  # cmd-ev = any -> any
+  # cmd-pr = any -> str (or use conv?)
+  # cmd-rep  = str -> any -> str (all three)
+
+  '(((ksd~l) cmd-read)
+    ((ksd~u) cmd-eval)
+    ((ksd~y) cmd-pp)
+    ((ksd~;) cmd-rep)))
 
 
 (def '*binds-cmd-line
 
-  ######
-  # Line
-
-  # use alt
+  # no longer needed
 
   '(((ksd~n) cmd-ptr-ln-first)
     ((ksd~m) cmd-ptr-ln-last)
@@ -79,9 +102,6 @@
 
 
 (def '*binds-cmd-cua
-
-  #########
-  # CUA Ops
 
   # Most Microsoft Windows applications:
   #   Undo: Ctrl+Z or Alt+Backspace
@@ -105,44 +125,6 @@
     ((ksd~c) ((Ks) (println "Ctrl-L c: COPY")))
     ((ksd~v) ((Ks) (println "Ctrl-L v: PASTE")))
     (ksd~Control-L ksd~Shift-L ksd~z) ((Ks) (println "Ctrl-Shift-L y: REDO"))))
-
-
-(def '*binds-cmd-atom
-
-  ############
-  # Atomic Ops
-
-  # Atom <-> List
-  # * pack/glue ""
-  #   list -> str
-  # * chop/split " "
-  #   str  -> list
-
-  # Str <-> Atom
-  # * sym/intern:   str -> sym
-  # * str/name,sym: sym -> str
-  # * num/format:   str <-> num
-
-  '(((ksd~n) cmd-conv)
-    ((ksd~e) cmd-chop)))
-
-
-(def '*binds-cmd-repl
-
-  ######
-  # REPL
-  # Str/Code <-> Any
-  # Any <-> Any
-
-  # cmd-rd = str -> any
-  # cmd-ev = any -> any
-  # cmd-pr = any -> str (or use conv?)
-  # cmd-rep  = str -> any -> str (all three)
-
-  '(((ksd~l) cmd-read)
-    ((ksd~u) cmd-eval)
-    ((ksd~y) cmd-pp)
-    ((ksd~;) cmd-rep)))
 
 
 (def '*binds-cmd-ptr-s
@@ -193,10 +175,10 @@
 
   '(~*binds-cmd-static
     ~*binds-cmd-pair
-    ~*binds-cmd-line
-    ~*binds-cmd-cua
     ~*binds-cmd-atom
     ~*binds-cmd-repl
+    ~*binds-cmd-line
+    ~*binds-cmd-cua
     ~*binds-cmd-ptr-s
     ~*binds-cmd-ptr-t
     ~*binds-cmd-view))

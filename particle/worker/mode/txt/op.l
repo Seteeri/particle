@@ -2,24 +2,24 @@
 
   '(
     ((ksd~Tab) cmd-chg-mode)
-  
-    ((ksd~Alt-L ksd~Tab)    cmd-make-char)
-    ((ksd~Alt-R ksd~Tab)    cmd-make-char)
-    
+
+    ((ksd~Alt-L ksd~Tab) cmd-make-char)
+    ((ksd~Alt-R ksd~Tab) cmd-make-char)
+
     ((ksd~BackSpace) cmd-bsp)
-    ((ksd~Delete   ) cmd-del)  
-  
-    ((ksd~Return) cmd-make-char)
+    ((ksd~Delete   ) cmd-del)
+
+    ((ksd~Return)                  cmd-make-char)
     ((ksd~Shift-R   ksd~Return)    cmd-make-line)
     ((ksd~Shift-R   ksd~BackSpace) cmd-del-line)
-    
+
     # DEBUG
-    ((ksd~Control-R ksd~Return) cmd-print-ptr)
+    ((ksd~Control-R ksd~Return)    cmd-print-ptr)
     ((ksd~Control-R ksd~BackSpace) cmd-reset-start)
-  
+
   ))
 
-  
+
 (de list-binds-txt-ops @
   (let L NIL
     (while (next)
@@ -30,4 +30,4 @@
               Rep (if (sym? Rep) (val Rep) @)
               Cmd (if (sym? Cmd) (val Cmd) @))
           (push 'L (list Keys Rep Cmd)))))
-    L))    
+    L))

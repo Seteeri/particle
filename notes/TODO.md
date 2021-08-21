@@ -34,7 +34,15 @@ TODO
     * line ops
     * cua ops
 
-  * Remove line functionality (lots of work)
+  * Redesign UI doc without lines
+    * main diff is lines are not arbitrary
+    * will always be on Y cell
+
+  * Rename modes
+    * recategorize cmds
+    * based on fn or data type
+    * cmd is vague
+    * txt is for str symbols
 
   * Rewrite tests [Weekend]
     * Dynamic tests

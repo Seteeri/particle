@@ -976,6 +976,26 @@ have repr match nested lists
 select whitespace to make a list?
 creates hidden ptr state?
 
+[X] CDR
+CAR
+
+[Y] CAR
+CDR
+
+
+((a b c)
+ (d e f))
+
+* both y's have line property set
+
+[Y] [X] [X] [X]
+ .   .   .   .
+
+[Y] [X] [X] [X]
+     .   .   .
+ .
+
+
 ============================================
 ============================================
 

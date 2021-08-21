@@ -39,11 +39,11 @@ Interfaces:
 Note, asterisk is another type of atom/symbol called an internal symbol which will be for a later discussion.
 
 Or how a layperson might view the concepts:
-    
+
     +------------------------+--------------------------------------+
     | Data Type              | Layperson                            |
     +------------------------+--------------------------------------+
-    | List                   | Directory/folder                     | 
+    | List                   | Directory/folder                     |
     |                        | with files as the "atoms"            |
     +------------------------+--------------------------------------+
     | Atom: Number           | Integers like 1, 2, 3                |
@@ -59,7 +59,7 @@ Or how a layperson might view the concepts:
 * Every list ends with the atom `NIL`
   * It's as if every folder, had a file named `NIL` in it, which no matter how you sorted the folder view, the `NIL` file was always last.
 * Atoms are one of three types: `NIL`, internal, and transient
-  * For this discussion, the following nomencalture will be interchangably used: 
+  * For this discussion, the following nomencalture will be interchangably used:
     * External = link
     * Transient = string
   * `NIL` represents nothingness or false or "No"
@@ -67,10 +67,10 @@ Or how a layperson might view the concepts:
     * As if you were asked a question by the computer, instead of saying "No", you would say `NIL`
       * "Yes" or to say something is true, is represented by the symbol `T` and the opposite of `NIL`
       * Technically speaking, *any* data (including lists) that is not `NIL` is considered true.
-    
+
 *show brief examples*
 *show with color*
-    
+
 ## Lists
 
 The concept of a list is intuitive and typically learned early on; the standard 5 paragraph essay in school etc. Anytime one creates an outline of sorts, one is creating a list or in computer science terms, a data structure.
@@ -88,7 +88,7 @@ The concept of a list is intuitive and typically learned early on; the standard 
     ...
 
 *use actual outline example*
-    
+
 `I`'s content consists of a `Title` and body (`A`, `B`, ...). In the user's mind, the association is indicated by visual cues - all indented content underneath each bullet, can be considered belonging to that bullet or concept. The same pattern repeats itself recursively and serially.
 
     I. Title
@@ -102,7 +102,7 @@ The concept of a list is intuitive and typically learned early on; the standard 
        Body
     ...
 
-Because the user is already familiar with the counting system, the user implicitly knows that `I` proceeds to `II` and so on, without needing additional explicit depiction of that relationship. 
+Because the user is already familiar with the counting system, the user implicitly knows that `I` proceeds to `II` and so on, without needing additional explicit depiction of that relationship.
 
 Now, take for example how a programmer could see the same outline as a data structure, called a singly-linked list, with a more verbose representation (L#=List, depth level; A=Atom):
 
@@ -114,7 +114,7 @@ Now, take for example how a programmer could see the same outline as a data stru
 
                 [L3]  [A]  [A]    NIL
                       1.   Title
- 
+
                       [L4]  [A]  [A]    NIL
                             i.   Title
 
@@ -122,7 +122,7 @@ Now, take for example how a programmer could see the same outline as a data stru
 
                 [L3]  [A]  [A]    NIL
                       2.   Title
-                   
+
                 NIL
 
           [L2]  [A]  [A]
@@ -138,16 +138,16 @@ Now, take for example how a programmer could see the same outline as a data stru
 
                 [L3]  [A]  [A]    NIL
                       2.   Title
-                    
+
                 NIL
-              
+
           NIL
-         
+
     [L1]  [A]  [A]
           II.  Title
-         
+
          ...
-         
+
     ...
 
 Breaking this down serially into lists:
@@ -161,7 +161,7 @@ Breaking this down serially into lists:
 
                 [L3]  [A]  [A]    NIL         List 3 contains 4 items: A, A, L4, NIL
                       1.   Title
- 
+
                       [L4]  [A]  [A]    NIL   List 4 contains 3 items: A, A, NIL
                             i.   Title
 
@@ -169,7 +169,7 @@ Breaking this down serially into lists:
 
                 [L3]  [A]  [A]    NIL
                       2.   Title
-                   
+
                 NIL
 
           [L2]  [A]  [A]
@@ -185,13 +185,13 @@ Breaking this down serially into lists:
 
                 [L3]  [A]  [A]    NIL
                       2.   Title
-                    
+
                 NIL
-              
+
           NIL
 
 The next section will go further into the atoms like "A" and `NIL` etc.
-          
+
 ## Symbols
 
                     +-----------+-----------+
@@ -213,7 +213,7 @@ The next section will go further into the atoms like "A" and `NIL` etc.
   * The URL would be another symbol.
 
 * External symbols are equivalent to hyperlinks.
-  
+
 * Plain text or strings can be thought of as hyperlinks without any value since the string itself is its meaning, i.e. the word represents itself
   * In computer speak, the symbol points to itself.
   * It is simplest to think of strings/text as links without a link or value.
@@ -232,7 +232,7 @@ The next section will go further into the atoms like "A" and `NIL` etc.
   * Widgets which will be discussed in a later section
 
 The next section will talk about pointers, which can be considered a type of symbol.
-  
+
 #### Pointers
 
 * A pointer is Particle's version of a traditional mouse cursor or pointer used to select objects.
@@ -259,13 +259,13 @@ The next section will talk about pointers, which can be considered a type of sym
   * If a user deletes all the pointers, they will be unable to perform commands.
 * The user can see all pointers available in the `*ptr` list.
 * The `*ptr` list can also be used to change pointers.
-  
+
 Basic Commands:
-  
+
 * To switch pointers
   * Mov pointer to pointer
   * Use switch-ptr command
-  
+
 Basic Selections:
 
 * To select one atom or list
@@ -278,7 +278,7 @@ Basic Selections:
   * Pass pointer list to command
 
 Advanced Selections:
-  
+
 Basic operations can be combined to perform more advanced selections:
 
 * Select non-contiguous atoms in a list
@@ -305,29 +305,7 @@ Now armed with the basic knowledge, more commands can be used, which will be dis
 
 # Basic Operations
 
-    +-------------------+---------------------------------------------+
-    | Key Binding       | Command (CAR/CDR)                           |
-    +-------------------+---------------------------------------------+
-    | ASCII             | Make single-character strings: "a" "b" ...  |
-    +-------------------+---------------------------------------------+
-    | Enter             | Make newline char                           |
-    +-------------------+---------------------------------------------+
-    | Backspace         | Del before data                             |
-    +-------------------+---------------------------------------------+
-    | Delete            | Del after data                              |
-    +-------------------+---------------------------------------------+
-    | L-Alt + Space     | Convert atom: str <-> sym, num <-> str      |    
-    +-------------------+---------------------------------------------+
-    | R-Alt + Enter     | Make list / Make newline                    |
-    +-------------------+---------------------------------------------+
-    | R-Alt + Backspace | Del newline                                 |
-    +-------------------+---------------------------------------------+
-
-TODO:
-* Mov cursor...
-* Mov Start/End of List
-* Mov Start/End of Line
-* Make NIL
+see modes...
 
 *Add GIF anims*
 
@@ -337,18 +315,20 @@ Command keys are based on spatial relationship, aka physically group related fun
 
 ## Cmd-Pointer Matrices (ATOM/PAIR)
 
-  * factor in parent cell layout
-  * remember, del pair behind ptr
+  * Format:
+    * C: pair or atom
+    * B: (car B) or (cdr B) = C
+    * A: (cdr A) = B
 
   STR:
-  
+
     * 2 opts for x/y-b: treat NIL as pair or atom
       * mak-str-x-a/b = repl atom
       * con-b-pair-x/mak-str-y-b = ins pair
       * -> treat as list so same as typing
       * -> also not common cdr non-NIL
       * usr can use alt-reg to repl atom
-    
+
     +---+------------------+-----------------------+
     |   |       CAR        |          CDR          |
     |---+------------------+-----------------------+
@@ -406,10 +386,10 @@ Command keys are based on spatial relationship, aka physically group related fun
     |   |                                 |           [y] .               |
     |   |                                 |                               |
     |   |                                 |            .                  |
-    +---+---------------------------------+-------------------------------+    
-  
+    +---+---------------------------------+-------------------------------+
+
   LIST:
-    
+
     +---+---------------------------------+---------------------+
     |   |              CAR                |         CDR         |
     |---+---------------------------------+---------------------+
@@ -484,14 +464,14 @@ Command keys are based on spatial relationship, aka physically group related fun
     |   |                                 |                 .             |
     |   |                                 |  .                            |
     |   |                                 |            .                  |
-    +---+---------------------------------+-------------------------------+    
-    
+    +---+---------------------------------+-------------------------------+
+
   BSP:
-  
+
     * repl back with cur
     * cur atom car does nothing
     * check when cdr non-NIL
-  
+
     +---+----------------------------+---------------------------------+
     |   |             CAR            |               CDR               |
     |---+----------------------------+---------------------------------+
@@ -519,9 +499,9 @@ Command keys are based on spatial relationship, aka physically group related fun
     +---+------------------------------+-------------------------------+
     | S | (c (d) e) -> (c d)           | (c d e) -> (d e)              |
     +---+------------------------------+-------------------------------+
-    |   | # Y-Pair car = X-Pair        | # Y-Pair cdr = X-Pair         | 
-    |   |                              |                               |     
-    |   | [ ]        ->  [ ]           |             *                 |    
+    |   | # Y-Pair car = X-Pair        | # Y-Pair cdr = X-Pair         |
+    |   |                              |                               |
+    |   | [ ]        ->  [ ]           |             *                 |
     |   |  .              .            | [y] .  ->  [ ] .              |
     |   |       *         *            |  *          .                 |
     |   | [y]  [ ] .     [ ] .         | [ ]                           |
@@ -540,7 +520,7 @@ Command keys are based on spatial relationship, aka physically group related fun
     |   |                              |                               |
     |   |  .               .           |                               |
     +---+------------------------------+-------------------------------+
-    |   | # X-Pair car = X-Pair (TODO) | # X-Pair cdr = X-Pair         |      
+    |   | # X-Pair car = X-Pair (TODO) | # X-Pair cdr = X-Pair         |
     |   |                              |                               |
     |   | [ ]     .  ->  [ ]   .       |       *          *            |
     |   |                 *            | [ ]  [ ] .  ->  [ ] .         |
@@ -559,20 +539,20 @@ Command keys are based on spatial relationship, aka physically group related fun
     |   |               .              |                               |
     |   |                              |  .                            |
     |   |                              |                               |
-    +---+------------------------------+-------------------------------+    
-    
+    +---+------------------------------+-------------------------------+
+
   DEL:
-  
+
     * repl cur with NIL
-    
+
     +---+------------------------------+-------------------------------+
     |   |              CAR             |              CDR              |
     +---+------------------------------+-------------------------------+
     | S | (c (d) e) -> (c d)           | (c d e) -> (d e)              |
     +---+------------------------------+-------------------------------+
-    |   | # Y-Pair car = X-Pair        | # Y-Pair cdr = X-Pair         | 
-    |   |                              |                               |     
-    |   | [ ]        ->  [ ]           | [y] .  ->  [y] .              |    
+    |   | # Y-Pair car = X-Pair        | # Y-Pair cdr = X-Pair         |
+    |   |                              |                               |
+    |   | [ ]        ->  [ ]           | [y] .  ->  [y] .              |
     |   |  .              .            |  *          *                 |
     |   |       *              *       | [ ]                           |
     |   | [y]  [ ] .     [y]   .       |  .                            |
@@ -590,7 +570,7 @@ Command keys are based on spatial relationship, aka physically group related fun
     |   |                              |                               |
     |   |  .                           |                               |
     +---+------------------------------+-------------------------------+
-    |   | # X-Pair car = X-Pair (TODO) | # X-Pair cdr = X-Pair         |      
+    |   | # X-Pair car = X-Pair (TODO) | # X-Pair cdr = X-Pair         |
     |   |                              |                               |
     |   | [ ]     .  ->  [ ]   .       |       *             *         |
     |   |                 *            | [ ]  [ ] .  ->  [ ] .         |
@@ -610,16 +590,16 @@ Command keys are based on spatial relationship, aka physically group related fun
     |   |                              |  .                            |
     |   |                              |                               |
     |   |                              | # assume Y always nl          |
-    +---+------------------------------+-------------------------------+    
-        
-    
+    +---+------------------------------+-------------------------------+
+
+
   LINE:
 
     * Only applies to B
       * For A, poss do same action as B
     * No multi-spaced lines
       * Poss?
-      
+
     +---+---------------------+------------------+
     |   |         CAR         |        CDR       |
     |---+---------------------+------------------+
@@ -630,21 +610,21 @@ Command keys are based on spatial relationship, aka physically group related fun
     |   |                     |             *    |
     |---+---------------------+------------------+
     |   | [ ]    ->  [ ]      | [y] .  ->  [y] . |
-    |   |  .          .       |  *               | 
-    |   |                     |             *    | 
+    |   |  .          .       |  *               |
+    |   |                     |             *    |
     |   | [y] *      [y] *    |                  |
     | Y |  .          .       |                  |
     |   |                     |                  |
     +---+---------------------+------------------+
-    
+
     * applies to X/Cdr/X
-    
+
     +---+------------------------------+-----------------------+
     |   |              CAR             |          CDR          |
     +---+------------------------------+-----------------------+
-    |   | # Y-Pair car = X-Pair        | # Y-Pair cdr = X-Pair | 
-    |   |                              |                       |     
-    |   | [ ]        ->  [ ]           | [y] .  ->  [y] .      |    
+    |   | # Y-Pair car = X-Pair        | # Y-Pair cdr = X-Pair |
+    |   |                              |                       |
+    |   | [ ]        ->  [ ]           | [y] .  ->  [y] .      |
     |   |  .              .            |  *          *         |
     |   |       *              *       | [ ]        [ ]        |
     |   | [y]  [ ] .     [y]  [ ] .    |  .          .         |
@@ -663,7 +643,7 @@ Command keys are based on spatial relationship, aka physically group related fun
     |   |                              |                       |
     |   |  .               .           |                       |
     +---+------------------------------+-----------------------+
-    |   | # X-Pair car = X-Pair (TODO) | # X-Pair cdr = X-Pair |      
+    |   | # X-Pair car = X-Pair (TODO) | # X-Pair cdr = X-Pair |
     |   |                              |                       |
     |   | [ ]     .  ->  [ ]     .     |       *               |
     |   |                              | [ ]  [ ] .  ->  [ ]   |
@@ -679,8 +659,8 @@ Command keys are based on spatial relationship, aka physically group related fun
     |   | [y]  [y] .      [y]  [y] .   |  *          *         |
     |   |       .               .      | [y] .      [y] .      |
     |   |  .               .           |  .          .         |
-    +---+------------------------------+-----------------------+    
-    
+    +---+------------------------------+-----------------------+
+
 
 ### X <-> Y Pair
 
@@ -773,7 +753,7 @@ A new list is placed on a new line for either layout:
 ### X Layout
 
     [X]  [X]  [X]  NIL
-    A    B    
+    A    B
               [X]  NIL
               C
 
@@ -782,14 +762,14 @@ A new list is placed on a new line for either layout:
 ### Y Layout
 
     [X]  [X]
-    A    B    
+    A    B
 
     [Y]  [X]  NIL
-    NIL  C   
+    NIL  C
 
 * If no pair after, implies following pair is on newline
 
-These combinations are also possible, but to be generally avoided, due to the difficulty 
+These combinations are also possible, but to be generally avoided, due to the difficulty
 in quickly visually distinguishing a list; typically used for special forms.
 
 ### Y Layout / Same Line:
@@ -800,7 +780,7 @@ in quickly visually distinguishing a list; typically used for special forms.
 ### X Layout / New Line:
 
     [X]  [X]
-    A    B    
+    A    B
 
     [X]  NIL
 
@@ -812,23 +792,23 @@ in quickly visually distinguishing a list; typically used for special forms.
     (a b (c))
 
     [X]  [X]
-    A    B    
-    
+    A    B
+
     0
     [Y]  [X]  NIL
     NIL  C
-  
+
 Call make-nl:
-  
+
     (a b ((c)))
-    
+
     [X]  [X]
-    A    B    
+    A    B
 
              0
     [Y]  [X] NIL
     NIL
-    
+
          [Y]  [X]  NIL
          NIL  C
 
@@ -850,7 +830,7 @@ LISP in a Nutshell:
   * Symbols include strings
 * Pairs whose CDR points to another pair creats a list
   * Proper lists end with NIL
-  
+
 *Note to self: research relationship between binary trees, general trees,
 directed acyclic graphs*
 https://stackoverflow.com/questions/16860566/s-expression-for-directed-acyclic-graph
