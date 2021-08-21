@@ -92,7 +92,7 @@
 
 (def '*binds-cmd-line
 
-  # no longer needed
+  # refactor...really more about lists (y pair)
 
   '(((ksd~n) cmd-ptr-ln-first)
     ((ksd~m) cmd-ptr-ln-last)

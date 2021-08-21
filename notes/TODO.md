@@ -27,6 +27,7 @@ TODO
       * list: DONE
       * bsp: WIP
       * del:
+      *
       * alt:
       * line: skip...
     * atomic ops
