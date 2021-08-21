@@ -86,11 +86,11 @@
             "/particle/worker/ops/alt-reg.l"
             "/particle/worker/ops/conv.l"
 
-            "/particle/worker/ops/str/mak.l"
+            "/particle/worker/ops/str/make.l"
             "/particle/worker/ops/str/pair.l"
             "/particle/worker/ops/str/atom.l"
 
-            "/particle/worker/ops/pair/mak.l"
+            "/particle/worker/ops/pair/make.l"
             "/particle/worker/ops/pair/pair.l"
             "/particle/worker/ops/pair/atom.l"
 
