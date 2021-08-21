@@ -2,7 +2,8 @@
 
   (let ((C Pt-C Reg-C
          B Pt-B Reg-B
-         A Pt-A)      (refs-2> *ptr))
+         A Pt-A)
+        (refs-2> *ptr))
 
     (cond
 
