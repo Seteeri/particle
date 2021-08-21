@@ -29,11 +29,10 @@
 
         (cond
 
-          ((and (lay-x?> Pt-B) (= Reg-C 'a) (lay-x?> Pt-C)) (bsp-xa-x Pt-A Pt-B Pt-C))
           ((and (lay-x?> Pt-B) (= Reg-C 'b) (lay-x?> Pt-C)) (bsp-xb-x Pt-A Pt-B Pt-C))
-
-          ((and (lay-x?> Pt-B) (= Reg-C 'a) (lay-y?> Pt-C)) (bsp-xa-y Pt-A Pt-B Pt-C))
-          ((and (lay-x?> Pt-B) (= Reg-C 'b) (lay-y?> Pt-C)) (bsp-xb-y Pt-A Pt-B Pt-C))
+          #((and (lay-x?> Pt-B) (= Reg-C 'a) (lay-x?> Pt-C)) (bsp-xa-x Pt-A Pt-B Pt-C))
+          #((and (lay-x?> Pt-B) (= Reg-C 'a) (lay-y?> Pt-C)) (bsp-xa-y Pt-A Pt-B Pt-C))
+          #((and (lay-x?> Pt-B) (= Reg-C 'b) (lay-y?> Pt-C)) (bsp-xb-y Pt-A Pt-B Pt-C))
 
           ((and (lay-y?> Pt-B) (= Reg-C 'a) (lay-x?> Pt-C)) (bsp-ya-x Pt-A Pt-B Pt-C))
           ((and (lay-y?> Pt-B) (= Reg-C 'b) (lay-x?> Pt-C)) (bsp-yb-x Pt-A Pt-B Pt-C))
@@ -51,8 +50,6 @@
 
 # pair
 
-(de bsp-xa-x (Pt-A Pt-B Pt-C))
-
 (de bsp-xb-x (Pt-A Pt-B Pt-C)
 
   # del B with car, keep cdr
@@ -66,10 +63,6 @@
   (with *ptr
     (=: any (get Pt-A 'any))
     (=: reg 'b)))
-
-(de bsp-xa-y (Pt-A Pt-B Pt-C) (println 'bsp-xa-y "TODO"))
-
-(de bsp-xb-y (Pt-A Pt-B Pt-C) (println 'bsp-xb-y "TODO"))
 
 (de bsp-ya-x (Pt-A Pt-B Pt-C) (println 'bsp-ya-x "TODO"))
 
