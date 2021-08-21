@@ -1,31 +1,3 @@
-#{
-
-  x-a
-  x-b
-  y-a
-  y-b
-
-  ya-x
-  yb-x
-  ya-y
-  yb-y
-
-  xa-x
-  xb-x
-  xa-y
-  xb-y
-
-  atom: make pair with cur as car
-        car creates y pair (x pair is other cmd)
-        cdr creates x pair (use alt-lay to chg to lay y)
-
-
-  list: make pair with cur as car
-        car creates y pair (x pair is other cmd)
-        cdr creates y pair
-
-}#
-
 (de make-pair-y (Str)
 
   (let ((C Pt-C Reg-C
