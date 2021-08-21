@@ -202,11 +202,7 @@
 
 # PAIR
 
-(de make-pair-xa-x (Pt-B Pt-C) (make-pair-a-pair Pt-B Pt-C))
 (de make-pair-xb-x (Pt-B Pt-C) (make-pair-b-pair Pt-B Pt-C))
-
-(de make-pair-xa-y (Pt-B Pt-C) (make-pair-a-pair Pt-B Pt-C))
-(de make-pair-xb-y (Pt-B Pt-C) (make-pair-b-pair Pt-B Pt-C))
 
 
 (de make-pair-ya-x (Pt-B Pt-C) (make-pair-a-pair Pt-B Pt-C))
