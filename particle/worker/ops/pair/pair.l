@@ -1,3 +1,12 @@
+(de make-pair-xb-x (Pt-B Pt-C) (make-pair-b-pair Pt-B Pt-C))
+
+(de make-pair-ya-x (Pt-B Pt-C) (make-pair-a-pair Pt-B Pt-C))
+(de make-pair-yb-x (Pt-B Pt-C) (make-pair-b-pair Pt-B Pt-C))
+
+(de make-pair-ya-y (Pt-B Pt-C) (make-pair-a-pair Pt-B Pt-C))
+(de make-pair-yb-y (Pt-B Pt-C) (make-pair-b-pair Pt-B Pt-C))
+
+
 (de make-pair-b-pair (Pt-B Pt-C)
   #{
 
@@ -197,16 +206,3 @@
 
     (top-ref> *ptr)
     (draw> *ptr)))
-
-
-
-# PAIR
-
-(de make-pair-xb-x (Pt-B Pt-C) (make-pair-b-pair Pt-B Pt-C))
-
-
-(de make-pair-ya-x (Pt-B Pt-C) (make-pair-a-pair Pt-B Pt-C))
-(de make-pair-yb-x (Pt-B Pt-C) (make-pair-b-pair Pt-B Pt-C))
-
-(de make-pair-ya-y (Pt-B Pt-C) (make-pair-a-pair Pt-B Pt-C))
-(de make-pair-yb-y (Pt-B Pt-C) (make-pair-b-pair Pt-B Pt-C))

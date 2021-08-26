@@ -990,9 +990,16 @@ To go from:
 
   (a b c d)
 
-  [X] [X] [X] [X] [X] .
-   .   .   .   .   .
+  [X] [X] [X] [X] .
+   .   .   .   .
 
+   or
+
+  [X] [X]
+   .   .
+
+  [X] [X] .
+   .   .
 
 to:
 
@@ -1021,6 +1028,35 @@ to:
 
   ...
 
+
+
+lines are necessary
+how to represent lisp code
+poss use special forms
+
+2 cases for lines:
+* arbitrary
+* forms
+
+either way still need to manage lines
+
+2 ways:
+* store in point at start of each line
+* store in list
+  * each part always links back to first pair
+  i.e. first Y, or when pair is the car
+
+what if instead of lines,
+we do a grid - only works with monospace
+
+or instead of linked lines,
+indexed lines,
+multiply from base - only works with same sized lines
+
+lines interact with spatial indexing
+
+each line tracks its bounds
+and each list tracks all the lines
 
 ============================================
 ============================================

@@ -320,7 +320,10 @@ Command keys are based on spatial relationship, aka physically group related fun
     * B: (car B) or (cdr B) = C
     * A: (cdr A) = B
 
-  * Only Y pair can have line property set
+  * Line Prop Set:
+    * Y-Pair
+    * Y-Pair CAR -> X-Pair [is this correct?]
+    * Y-Pair CDR -> X-Pair
 
   * X-Pair CDR !-> Y-PAIR
     * Y-PAIR is part of same list
@@ -330,12 +333,14 @@ Command keys are based on spatial relationship, aka physically group related fun
   STR:
 
     * For X-Pair CDR NIL, make pair
+      * matches expected typing behavior
       * Not common for cdr to be non-NIL atom
       so default to make pair
         * con-b-pair-x/mak-str-y-b = ins pair
         * aka improper list
-      * usr can use alt-reg to repl atom
+      * use alt-reg to repl atom
       * other fn is mak-str-x-a/b = repl atom
+      * also applies to Y-Pair CDR NIL
 
     ATOM:
 
@@ -368,7 +373,8 @@ Command keys are based on spatial relationship, aka physically group related fun
     |   |                                 |  .    .        .    .    .    |
     |   |                                 |                               |
     | X +---------------------------------+-------------------------------+
-    |   | # -> Y (N/A)                                                    |
+    |   | # -> Y (N/A)                    | # -> Y                        |
+    |   | preceding pair always Y         |                               |
     +---+---------------------------------+-------------------------------+
     |   | # -> X                          | # -> X                        |
     |   |                                 |                               |
@@ -440,7 +446,8 @@ Command keys are based on spatial relationship, aka physically group related fun
     |   |                                 |                               |
     |   |                                 | # watch lines                 |
     | X +---------------------------------+-------------------------------+
-    |   | # -> Y (N/A)                                                    |
+    |   | # -> Y (N/A)                    | # -> Y                        |
+    |   | preceding pair always Y         |                               |
     +---+---------------------------------+-------------------------------+
     |   | # -> X                          | # -> X                        |
     |   |                                 |                               |
@@ -498,41 +505,42 @@ Command keys are based on spatial relationship, aka physically group related fun
 
     PAIR:
 
-    +---+------------------------+-----------------------+
-    |   |          CAR           |          CDR          |
-    +---+------------------------+-----------------------+
-    | S | (c (d) e) -> (c d)     | (c d e) -> (d e)      |
-    +---+------------------------+-----------------------+
-    |   | # -> X (N/A)           | # -> X                |
-    |   |                        |                       |
-    |   |                        |       *          *    |
-    |   |                        | [ ]  [ ] .  ->  [ ] . |
-    |   |                        |  .    .          .    |
-    |   |                        |                       |
-    | X +------------------------+-----------------------+
-    |   | # -> Y (N/A)                                   |
-    +---+------------------------+-----------------------+
-    |   | # -> X                 | # -> X                |
-    |   |                        |                       |
-    |   | [ ]        ->  [ ]     |             *         |
-    |   |  .              .      | [y] .  ->  [ ] .      |
-    |   |       *         *      |  *          .         |
-    |   | [y]  [ ] .     [ ] .   | [ ]                   |
-    |   |       .                |  .                    |
-    |   |                        |                       |
-    |   | [ ]            [ ]     |                       |
-    |   |  .              .      |                       |
-    | Y +------------------------+-----------------------+
-    |   | # -> Y                 | # -> Y                |
-    |   |                        |                       |
-    |   | [ ]         ->  [ ]    |             *         |
-    |   |  .               .     | [y] .  ->  [y] .      |
-    |   |       *          *     |  *          .         |
-    |   | [y]  [y] .      [y] .  | [y] .                 |
-    |   |       .          .     |  .                    |
-    |   |                        |                       |
-    |   |  .               .     |                       |
-    +---+------------------------------+-----------------+
+    +---+-------------------------+-----------------------+
+    |   |          CAR            |          CDR          |
+    +---+-------------------------+-----------------------+
+    | S | (c (d) e) -> (c d)      | (c d e) -> (d e)      |
+    +---+-------------------------+-----------------------+
+    |   | # -> X (N/A)            | # -> X                |
+    |   |                         |                       |
+    |   |                         |       *          *    |
+    |   |                         | [ ]  [ ] .  ->  [ ] . |
+    |   |                         |  .    .          .    |
+    |   |                         |                       |
+    | X +-------------------------+-----------------------+
+    |   | # -> Y (N/A)            | # -> Y                |
+    |   | preceding pair always Y |                       |
+    +---+-------------------------+-----------------------+
+    |   | # -> X                  | # -> X                |
+    |   |                         |                       |
+    |   | [ ]        ->  [ ]      |             *         |
+    |   |  .              .       | [y] .  ->  [ ] .      |
+    |   |       *         *       |  *          .         |
+    |   | [y]  [ ] .     [ ] .    | [ ]                   |
+    |   |       .                 |  .                    |
+    |   |                         |                       |
+    |   | [ ]            [ ]      |                       |
+    |   |  .              .       |                       |
+    | Y +-------------------------+-----------------------+
+    |   | # -> Y                  | # -> Y                |
+    |   |                         |                       |
+    |   | [ ]         ->  [ ]     |             *         |
+    |   |  .               .      | [y] .  ->  [y] .      |
+    |   |       *          *      |  *          .         |
+    |   | [y]  [y] .      [y] .   | [y] .                 |
+    |   |       .          .      |  .                    |
+    |   |                         |                       |
+    |   |  .               .      |                       |
+    +---+-------------------------+-----------------------+
 
 
   DEL:
@@ -556,7 +564,8 @@ Command keys are based on spatial relationship, aka physically group related fun
     |   |                              |                               |
     |   |                              | # watch lines                 |
     | X +------------------------------+-------------------------------+
-    |   | # -> Y                                                       |
+    |   | # -> Y (N/A)                 | # -> Y                        |
+    |   | preceding pair always Y      |                               |
     +---+------------------------------+-------------------------------+
     |   | # -> X                       | # -> X                        |
     |   |                              |                               |

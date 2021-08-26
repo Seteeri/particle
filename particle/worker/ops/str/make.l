@@ -21,10 +21,10 @@
 
         (cond
 
+          ((and (lay-x?> Pt-B) (= Reg-C 'a) (lay-x?> Pt-C)) (make-str-xa-x Str Pt-B Pt-C))
           ((and (lay-x?> Pt-B) (= Reg-C 'b) (lay-x?> Pt-C)) (make-str-xb-x Str Pt-B Pt-C))
-          #((and (lay-x?> Pt-B) (= Reg-C 'a) (lay-x?> Pt-C)) (make-str-xa-x Str Pt-B Pt-C))
-          #((and (lay-x?> Pt-B) (= Reg-C 'a) (lay-y?> Pt-C)) (make-str-xa-y Str Pt-B Pt-C))
-          #((and (lay-x?> Pt-B) (= Reg-C 'b) (lay-y?> Pt-C)) (make-str-xb-y Str Pt-B Pt-C))
+          ((and (lay-x?> Pt-B) (= Reg-C 'a) (lay-y?> Pt-C)) (make-str-xa-y Str Pt-B Pt-C))
+          ((and (lay-x?> Pt-B) (= Reg-C 'b) (lay-y?> Pt-C)) (make-str-xb-y Str Pt-B Pt-C))
 
           ((and (lay-y?> Pt-B) (= Reg-C 'a) (lay-x?> Pt-C)) (make-str-ya-x Str Pt-B Pt-C))
           ((and (lay-y?> Pt-B) (= Reg-C 'b) (lay-x?> Pt-C)) (make-str-yb-x Str Pt-B Pt-C))

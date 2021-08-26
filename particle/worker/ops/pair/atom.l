@@ -1,3 +1,7 @@
+(de make-pair-x-b (Pt-B Pt-C) (make-pair-x/y-b Pt-B Pt-C))
+(de make-pair-y-b (Pt-B Pt-C) (make-pair-x/y-b Pt-B Pt-C))
+
+
 (de make-pair-x-a (Pt-B Pt-C)
 
   #{
@@ -180,8 +184,3 @@
 
       (top-ref> *ptr)
       (draw> *ptr))))
-
-# ATOM
-
-(de make-pair-x-b (Pt-B Pt-C) (make-pair-x/y-b Pt-B Pt-C))
-(de make-pair-y-b (Pt-B Pt-C) (make-pair-x/y-b Pt-B Pt-C))

@@ -22,22 +22,26 @@ TODO
       * remove uncol from pt>
       * Mov trace to point
       * refactor con/set to not req any
-    * base cmds
-      * str: DONE
-      * list: DONE
-      * bsp: WIP
+    * Finish bootstrap ops/cmds
+      * str:
+      * list:
+      * bsp:
+      * create test for each case
       * del:
-      *
       * alt:
-      * line: skip...
+      * line:
     * atomic ops
     * repl ops
     * line ops
     * cua ops
 
-  * Redesign UI doc without lines
-    * main diff is lines are not arbitrary
-    * will always be on Y cell
+  * Reimplement lines, finish cmds, tests
+    * spatial index = r-tree
+      * note, every list particle caches the physical bounds of itself after each draw
+      * optimize backtrace
+        * can also cache prev cell in ptr
+      * drawing/culling
+        * avoid update stuff not in view
 
   * Rename modes
     * recategorize cmds
@@ -50,6 +54,10 @@ TODO
     * Randomize ops: permutations + double
       * Permutations dependent on num of cmds
     * Check that each Point is > x or < y
+
+  * REFACTOR
+    * check lines
+    * check drawing
 
   * Camera Tracking
     * Create cmds to center view, fit view etc

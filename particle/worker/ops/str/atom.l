@@ -15,14 +15,16 @@
     (set-ln-n> *ptr Pt-Str)
 
     # use pt to col ref also
-    (pt> *ptr B Reg-C T T)
+    # new pt does not have 'col
+    # so warning will print
+    (pt> *ptr B Reg-C 'draw 'col)
 
     (lay-*start)
 
     # Move to next car
     (when (and (pair B)
                (pair (cdr B))
-               (str? (car @)))
+               (atom (car @)))
       (sup> *ptr)
       (nex> *ptr)
       (sub> *ptr T))))

@@ -1,3 +1,4 @@
+(de make-str-xa-x (Str Pt-B Pt-C) (con-a-pair-x Str Pt-B Pt-C))
 (de make-str-xb-x (Str Pt-B Pt-C) (con-b-pair-x Str Pt-B Pt-C))
 
 (de make-str-ya-x (Str Pt-B Pt-C) (con-a-pair-x Str Pt-B Pt-C))
