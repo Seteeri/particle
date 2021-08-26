@@ -506,7 +506,7 @@ Command keys are based on spatial relationship, aka physically group related fun
     PAIR:
 
     +---+-------------------------+-----------------------+
-    |   |          CAR            |          CDR          |
+    |   |         CAR (A)         |         CDR (B)       |
     +---+-------------------------+-----------------------+
     | S | (c (d) e) -> (c d)      | (c d e) -> (d e)      |
     +---+-------------------------+-----------------------+

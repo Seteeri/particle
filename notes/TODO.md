@@ -23,13 +23,13 @@ TODO
       * Mov trace to point
       * refactor con/set to not req any
     * Finish bootstrap ops/cmds
-      * str: done
-      * list:
+      * str: done...
+      * list: done...
       * bsp:
       * create test for each case
-      * del:
+      * line: partial
       * alt:
-      * line:
+      * del:
     * atomic ops
     * repl ops
     * line ops

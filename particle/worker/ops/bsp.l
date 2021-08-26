@@ -30,9 +30,10 @@
         (cond
 
           ((and (lay-x?> Pt-B) (= Reg-C 'b) (lay-x?> Pt-C)) (bsp-xb-x Pt-A Pt-B Pt-C))
+          ((and (lay-x?> Pt-B) (= Reg-C 'b) (lay-y?> Pt-C)) (bsp-xb-y Pt-A Pt-B Pt-C))
+
           #((and (lay-x?> Pt-B) (= Reg-C 'a) (lay-x?> Pt-C)) (bsp-xa-x Pt-A Pt-B Pt-C))
           #((and (lay-x?> Pt-B) (= Reg-C 'a) (lay-y?> Pt-C)) (bsp-xa-y Pt-A Pt-B Pt-C))
-          #((and (lay-x?> Pt-B) (= Reg-C 'b) (lay-y?> Pt-C)) (bsp-xb-y Pt-A Pt-B Pt-C))
 
           ((and (lay-y?> Pt-B) (= Reg-C 'a) (lay-x?> Pt-C)) (bsp-ya-x Pt-A Pt-B Pt-C))
           ((and (lay-y?> Pt-B) (= Reg-C 'b) (lay-x?> Pt-C)) (bsp-yb-x Pt-A Pt-B Pt-C))
@@ -51,6 +52,33 @@
 # pair
 
 (de bsp-xb-x (Pt-A Pt-B Pt-C)
+
+  # check line
+
+  # del B with car, keep cdr
+  (del> Pt-B T NIL)
+
+  # con A -> C
+  (con> Pt-A (get Pt-C 'any) Pt-C)
+
+  # ptr moves, but ref is the same
+  # update ptr
+  (with *ptr
+    (=: any (get Pt-A 'any))
+    (=: reg 'b)))
+
+(de bsp-xb-y (Pt-A Pt-B Pt-C)
+
+  # Two ops:
+  # 1. Move Y pair to end of prev line and remove line
+  # 2. Keep Y pair
+  #
+  # 2 makes more sense
+  # Use explicit cmd to del line
+
+  # del cur line
+  (pop-line Pt-B)
+  (lns> *ptr)
 
   # del B with car, keep cdr
   (del> Pt-B T NIL)
