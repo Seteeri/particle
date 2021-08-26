@@ -35,6 +35,13 @@ TODO
     * line ops
     * cua ops
 
+  * Opts:
+    * When del car, replace with NIL or del pair
+    * When del car, move to next pair or next car
+    * When pt to car, move to next pair or next car
+    * Note, replace moves to next car
+      * so for consistency, should do the same
+
   * Reimplement lines, finish cmds, tests
     * spatial index = r-tree
       * note, every list particle caches the physical bounds of itself after each draw

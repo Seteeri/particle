@@ -475,10 +475,6 @@ Command keys are based on spatial relationship, aka physically group related fun
 
   BSP:
 
-    * repl back with cur
-    * cur atom car does nothing
-    * check when cdr non-NIL
-
     ATOM:
 
     +---+----------------------------+---------------------------------+
@@ -516,6 +512,7 @@ Command keys are based on spatial relationship, aka physically group related fun
     |   |                         | [ ]  [ ] .  ->  [ ] . |
     |   |                         |  .    .          .    |
     |   |                         |                       |
+    |   |                         | check line            |
     | X +-------------------------+-----------------------+
     |   | # -> Y (N/A)            | # -> Y                |
     |   | preceding pair always Y |                       |
