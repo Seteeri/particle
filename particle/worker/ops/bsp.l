@@ -53,7 +53,9 @@
 
 (de bsp-xb-x (Pt-A Pt-B Pt-C)
 
-  # check line
+  (when (get Pt-B 'line)
+    (pop-line Pt-B)
+    (lns> *ptr))
 
   # del B with car, keep cdr
   (del> Pt-B T NIL)
