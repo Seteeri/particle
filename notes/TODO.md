@@ -23,7 +23,7 @@ TODO
       * Mov trace to point
       * refactor con/set to not req any
     * Finish bootstrap ops/cmds
-      * str:
+      * str: done
       * list:
       * bsp:
       * create test for each case
