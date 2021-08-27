@@ -56,6 +56,8 @@
 
 (de bsp-xb-xy (Pt-A Pt-B Pt-C)
 
+  # use bsp-x-b?
+
   (when (get Pt-B 'line)
     (pop-line Pt-B)
     (lns> *ptr))
@@ -72,13 +74,24 @@
     (=: any (get Pt-A 'any))
     (=: reg 'b)))
 
-(de bsp-ya-x (Pt-A Pt-B Pt-C) (println 'bsp-ya-x "TODO"))
 
-(de bsp-yb-x (Pt-A Pt-B Pt-C) (println 'bsp-yb-x "TODO"))
+(de bsp-ya-x (Pt-A Pt-B Pt-C)
+  # bsp-x-a
+  (println 'bsp-ya-x "TODO"))
 
-(de bsp-ya-y (Pt-A Pt-B Pt-C) (println 'bsp-ya-y "TODO"))
+(de bsp-ya-y (Pt-A Pt-B Pt-C)
+  # similar to bsp-x-b - del prev
+  (println 'bsp-ya-y "TODO"))
 
-(de bsp-yb-y (Pt-A Pt-B Pt-C) (println 'bsp-xb-y "TODO"))
+
+(de bsp-yb-x (Pt-A Pt-B Pt-C)
+  # similar to bsp-x-b - del prev
+  (println 'bsp-yb-x "TODO"))
+
+
+(de bsp-yb-y (Pt-A Pt-B Pt-C)
+  # similar to bsp-x-b - del prev
+  (println 'bsp-xb-y "TODO"))
 
 # atom
 
@@ -124,6 +137,8 @@
   #
   # 2 seems expected
   (sub> *ptr T)
+
+  # instead of sub>, just pt>
 
   # del last
   (del> Pt-B T NIL))

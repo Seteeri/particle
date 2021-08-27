@@ -428,10 +428,29 @@ Command keys are based on spatial relationship, aka physically group related fun
 
     PAIR:
 
+    * opt:
+      * in: pair
+      * out: list with pair or list with list
+
+    How?
+         *
+    (a b c (d e f)) -> (a b (c) (d e f))
+
+    pt to car = cons atom and replace
+                (cons 'c)
+
+    vs
+
+         *
+    (a b c (d e f)) -> (a b (c (d e f)))
+
+    pt to cdr = cons pair and replace
+                (cons '(c (d e f)))
+
     +---+---------------------------------+-------------------------------+
     |   |               CAR               |              CDR              |
     +---+---------------------------------+-------------------------------+
-    | S | (c (d) e) -> (c ((d)) e)        | (c d e) -> (c ((d e)))        |
+    | S | (c (d) e) -> (c ((d)) e)        | (c d e) -> (c (d e))          |
     +---+---------------------------------+-------------------------------+
     |   | # -> X (N/A)                    | # -> X (N/A)                  |
     |   |                                 |                               |

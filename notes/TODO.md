@@ -25,42 +25,42 @@ TODO
     * Finish bootstrap ops/cmds
       * str: done...
       * list: done...
-      * bsp:
+        * fix: make pair in middle, go to prev, make pair again
+      * bsp: THURS
       * create test for each case
       * line: partial
       * alt:
-      * del:
+      * del: based on del
+
+  * Tests
+
+  * Refactor
+
+  * 2nd degree ops
     * atomic ops
     * repl ops
     * line ops
     * cua ops
 
   * Opts:
-    * When del car, replace with NIL or del pair
+    * When del car, replace with NIL or del pair (like del cdr)
     * When del car, move to next pair or next car
     * When pt to car, move to next pair or next car
     * Note, replace moves to next car
       * so for consistency, should do the same
 
-  * Reimplement lines, finish cmds, tests
-    * spatial index = r-tree
-      * note, every list particle caches the physical bounds of itself after each draw
-      * optimize backtrace
-        * can also cache prev cell in ptr
-      * drawing/culling
-        * avoid update stuff not in view
+  * spatial index = r-tree
+    * note, every list particle caches the physical bounds of itself after each draw
+    * optimize backtrace
+      * can also cache prev cell in ptr
+    * drawing/culling
+      * avoid update stuff not in view
 
   * Rename modes
     * recategorize cmds
     * based on fn or data type
     * cmd is vague
     * txt is for str symbols
-
-  * Rewrite tests [Weekend]
-    * Dynamic tests
-    * Randomize ops: permutations + double
-      * Permutations dependent on num of cmds
-    * Check that each Point is > x or < y
 
   * REFACTOR
     * check lines
