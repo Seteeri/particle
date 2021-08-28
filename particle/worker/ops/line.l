@@ -70,9 +70,9 @@
   (put Pt 'line NIL))
 
 
-(de pop-line (Po)
+(de pop-line (Pt)
 
-  (let? L (get Po 'line)
+  (let? L (get Pt 'line)
 
     (when (get L 'p)
       (put @ 'line 'n (get L 'n)))
