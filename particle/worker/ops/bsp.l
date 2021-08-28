@@ -101,7 +101,7 @@
   # this will make prv pair nil
   # will not work properly with y
 
-  (println 'bsp-xy-a)
+  (println 'bsp-x-a)
 
   # Replace Pt-A car -> NIL
   # Pt to Pt-A car
@@ -116,13 +116,18 @@
   #
   # .
 
-  (let Pt-Str (gen-point NIL 'x NIL T)
+  (if (lay-y?> Pt-A)
 
-    # Set new car, del old one
-    (set> Pt-A NIL Pt-Str T)
+      # no mov
+      (make-str-x-a NIL 'a Pt-B Pt-C 'skip-mov)
 
-    # Pt to Pt-A car
-    (pt> *ptr (get Pt-A 'any) 'a 'draw 'col)))
+      (let Pt-Str (gen-point NIL 'x NIL T)
+
+        # Set new car, del old one
+        (set> Pt-A NIL Pt-Str T)
+
+        # Pt to Pt-A car
+        (pt> *ptr (get Pt-A 'any) 'a 'draw 'col))))
 
 
 (de bsp-y-a (Pt-A Pt-B Pt-C)

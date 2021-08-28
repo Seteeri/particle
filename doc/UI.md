@@ -342,6 +342,11 @@ Command keys are based on spatial relationship, aka physically group related fun
       * other fn is mak-str-x-a/b = repl atom
       * also applies to Y-Pair CDR NIL
 
+    * opt: what to do when on car of last pair in a list (cdr of pair is NIL)
+      * replace car
+      * cons new pair with str
+        * seems more useful...
+
     ATOM:
 
     +---+------------------+-----------------------+
@@ -526,10 +531,10 @@ Command keys are based on spatial relationship, aka physically group related fun
         * user can explicitly delete the pair if they want
       * del car of prev
         * does this make sense? consistent...
-      * do nothing
-        * making it nil seems better than nothing?
       * del pair car, leave cdr
         * matches car x i suppose...
+      * do nothing
+        * making it nil seems better than nothing?
 
     +---+----------------------------+---------------------------------+
     |   |             CAR            |               CDR               |
