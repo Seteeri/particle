@@ -14,8 +14,8 @@
 
       ((isa '+Atom Pt-C)
         (if (= Reg-C 'a)
-            (bsp-xy-a Pt-A Pt-B Pt-C))
-            (bsp-xy-b Pt-A Pt-B Pt-C Reg-B))
+            (bsp-xy-a Pt-A Pt-B Pt-C)
+            (bsp-xy-b Pt-A Pt-B Pt-C Reg-B)))
 
       ((isa '+Pair Pt-C)
         (bsp-pair Pt-A Pt-B Pt-C Reg-A Reg-B Reg-C))
@@ -101,6 +101,9 @@
 
 
 (de bsp-xy-b (Pt-A Pt-B Pt-C Reg-B)
+
+  #             *
+  # crash on Y NIL
 
   (println 'bsp-xy-b)
 
