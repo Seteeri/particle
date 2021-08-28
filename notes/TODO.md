@@ -23,6 +23,7 @@ TODO
       * move lay dependent stuff to methods
       * set lines need to be consistent
         * direct push/pop vs set-ln-nxt
+      * set/con methods are handling lines?
     * Finish bootstrap ops/cmds
       * str: done
       * pair: done

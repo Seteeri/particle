@@ -65,9 +65,9 @@
   (put B-Pt 'line 'p A-Pt))
 
 
-(de del-line (Po)
-  (pop-line Po)
-  (put Po 'line NIL))
+(de del-line (Pt)
+  (pop-line Pt)
+  (put Pt 'line NIL))
 
 
 (de pop-line (Po)

@@ -39,17 +39,24 @@
 
 (de bsp-pair (Pt-A Pt-B Pt-C Reg-A Reg-B Reg-C)
 
-  (println 'bsp-xyb-xy)
+  (println 'bsp-pair)
 
   (when (get Pt-B 'line)
 
     (cond
 
-      ((and (= Reg-B 'b) (lay-y?> Pt-B) (= Reg-C 'a) (lay-x?> Pt-C)) # last 2 checks needed?
+      # last 2 checks needed?
+      ((and (= Reg-B 'b) (lay-y?> Pt-B) (= Reg-C 'a) (lay-x?> Pt-C))
         # x
         #   .
         # y x
-       (pop-line Pt-B))
+
+        # pop twice - one for X, one for Y
+        # since line is removed
+        # remove line from C
+       (del-line Pt-C)
+       (pop-line Pt-B)
+       (lns> *ptr))
 
       ((or (= Reg-B 'a) (lay-y?> Pt-B))
         # ...
@@ -85,12 +92,17 @@
 # atom
 
 (de bsp-xy-a (Pt-A Pt-B Pt-C)
+
+  (println 'bsp-xy-a)
+
   # Replace Pt-A car with NIL
   # This will update ptr and handle lines
   (make-str-x-a NIL 'a Pt-A (get Pt-A 'a) 'skip-mov))
 
 
 (de bsp-xy-b (Pt-A Pt-B Pt-C Reg-B)
+
+  (println 'bsp-xy-b)
 
   # if B has line, pop it
   # auto link A -> C
