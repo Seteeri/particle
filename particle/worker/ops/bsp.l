@@ -29,13 +29,12 @@
 
         (cond
 
-          ((and (lay-x?> Pt-B) (= Reg-C 'b)) (bsp-xb-xy Pt-A Pt-B Pt-C Reg-A Reg-B Reg-C))
+          # xb-xy, yb-x, yb-y = xyb-xy
+          ((= Reg-C 'b) (bsp-xyb-xy Pt-A Pt-B Pt-C Reg-A Reg-B Reg-C))
 
           ((and (lay-y?> Pt-B) (= Reg-C 'a) (lay-x?> Pt-C)) (bsp-ya-x Pt-A Pt-B Pt-C))
-          ((and (lay-y?> Pt-B) (= Reg-C 'b) (lay-x?> Pt-C)) (bsp-yb-x Pt-A Pt-B Pt-C))
+          ((and (lay-y?> Pt-B) (= Reg-C 'a) (lay-y?> Pt-C)) (bsp-ya-y Pt-A Pt-B Pt-C))))
 
-          ((and (lay-y?> Pt-B) (= Reg-C 'a) (lay-y?> Pt-C)) (bsp-ya-y Pt-A Pt-B Pt-C))
-          ((and (lay-y?> Pt-B) (= Reg-C 'b) (lay-y?> Pt-C)) (bsp-yb-y Pt-A Pt-B Pt-C))))
 
       (T
         (quit "bsp-pt: unknown cls")))
@@ -54,9 +53,9 @@
 # 2 makes more sense
 # Use explicit cmd to del line (formatting)
 
-(de bsp-xb-xy (Pt-A Pt-B Pt-C Reg-A Reg-B Reg-C)
+(de bsp-xyb-xy (Pt-A Pt-B Pt-C Reg-A Reg-B Reg-C)
 
-  (println 'bsp-xb-xy)
+  (println 'bsp-xyb-xy)
 
   # If A ir Y pair and B has a line, move it
   # else remove it
@@ -82,19 +81,11 @@
 
 
 (de bsp-ya-x (Pt-A Pt-B Pt-C)
-  (println 'bsp-ya-x "TODO"))
+  (println 'bsp-ya-x))
 
 
 (de bsp-ya-y (Pt-A Pt-B Pt-C)
   (println 'bsp-ya-y "TODO"))
-
-
-(de bsp-yb-x (Pt-A Pt-B Pt-C)
-  (println 'bsp-yb-x "TODO"))
-
-
-(de bsp-yb-y (Pt-A Pt-B Pt-C)
-  (println 'bsp-xb-y "TODO"))
 
 # atom
 

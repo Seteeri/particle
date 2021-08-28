@@ -520,6 +520,9 @@ Command keys are based on spatial relationship, aka physically group related fun
 
     PAIR:
 
+    * for y car x/y, either del y pair cdr or append it to list of y car
+      * compare to y car atom
+
     +---+-------------------------+-----------------------+
     |   |         CAR (A)         |         CDR (B)       |
     +---+-------------------------+-----------------------+
@@ -541,7 +544,7 @@ Command keys are based on spatial relationship, aka physically group related fun
     |   | [ ]        ->  [ ]      |             *         |
     |   |  .              .       | [y] .  ->  [ ] .      |
     |   |       *         *       |  *          .         |
-    |   | [y]  [ ] .     [ ] .    | [ ]                   |
+    |   | [y]  [ ] ...   [ ] .    | [ ]                   |
     |   |       .                 |  .                    |
     |   |                         |                       |
     |   | [ ]            [ ]      |                       |
