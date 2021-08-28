@@ -1,4 +1,4 @@
-(de make-str-x-a (Str Reg-C Pt-B Pt-C)
+(de make-str-x-a (Str Reg-C Pt-B Pt-C Mov)
 
   (println 'make-str-x-a)
 
@@ -22,12 +22,13 @@
     (lay-*start)
 
     # Move to next car
-    (when (and (pair B)
-               (pair (cdr B))
-               (atom (car @)))
-      (sup> *ptr)
-      (nex> *ptr)
-      (sub> *ptr T))))
+    (unless Mov # set T to skip
+      (when (and (pair B)
+                (pair (cdr B))
+                (atom (car @)))
+        (sup> *ptr)
+        (nex> *ptr)
+        (sub> *ptr T)))))
 
 
 (de make-str-x-b (Str Pt-B Pt-C)

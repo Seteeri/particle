@@ -90,11 +90,13 @@
 
 # atom
 
-# 2 opts:
-# 1. del pair
-# 2. del atom by replacing with NIL
-
 (de bsp-x-a (Pt-A Pt-B Pt-C Reg-B)
+  # Replace Pt-A car with NIL
+  # This will update ptr and handle lines
+  (make-str-x-a NIL 'a Pt-A (get Pt-A 'a)'skip-mov))
+
+
+(de bsp-x-a-2 (Pt-A Pt-B Pt-C Reg-B)
 
   # expected behavior: del "prev" link
   # NEED ALT to test properly
@@ -126,11 +128,7 @@
   # pt to BB
   (pt> *ptr (get Pt-A 'any) Reg-B 'draw 'col)
 
-  # Opt:
-  # 1. Move to next pair
-  # 2. Move to next pair car
-  #
-  # 2 seems expected
+  # mov to prev car
   (sub> *ptr T)
 
   # instead of sub>, just pt>
@@ -141,22 +139,11 @@
 
 (de bsp-x-b (Pt-A Pt-B Pt-C Reg-B)
 
-  #{
-
-    If ln del, auto con line
-
-  }#
-
-  # Remove B
-
   # if B has line, pop it
   # auto link A -> C
   (when (get Pt-B 'line)
     (pop-line Pt-B)
     (lns> *ptr))
-
-  # set cur ln as needed
-  #(set-ln-n> *ptr Pt-C)
 
   # del it with car, skip cdr
   (del> Pt-B T NIL)
@@ -164,7 +151,7 @@
   # Con A-C
   #   Dep if Reg-B is a/b
 
-  # creates line as needed
+  # Note, con> and set> create lines
   (if (= Reg-B 'a)
       (set> Pt-A (get Pt-C 'any) Pt-C)
       (con> Pt-A (get Pt-C 'any) Pt-C))
@@ -178,6 +165,10 @@
     (=: reg Reg-B)))
 
 
+# car opts:
+# * del cur pair (cur impl)
+# * del car of prev, i.e. make nil, but not entire pair (similar to typing)
+# * del car of cur, i.e. repl cur atom with nil (alt use make-nil)
 (de bsp-y-a (Pt-A Pt-B Pt-C))
 
 

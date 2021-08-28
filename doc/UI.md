@@ -505,8 +505,14 @@ Command keys are based on spatial relationship, aka physically group related fun
 
     * car opts:
       * del cur pair (cur impl)
+        * don't want two ways to do the same thing - pointless and wasteful
+        * so pair car deletes entire pair
       * del car of prev, i.e. make nil, but not entire pair (similar to typing)
+        * most familiar
+        * makes sense
       * del car of cur, i.e. repl cur atom with nil (alt use make-nil)
+        * again, don't want duplicate functionality
+      * verdict = DEL CAR OF PREV, i.e. replace with NIL and pt to it
 
     +---+----------------------------+---------------------------------+
     |   |             CAR            |               CDR               |

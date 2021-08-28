@@ -89,12 +89,3 @@
 (dm del> (A B)
 
   (for Vert (: verts) (del> Vert)))
-
-#{
-(dm con-pair-str> (Pt-Pair Str)
-  (if (reg-a?> *ptr)
-      (if (lay-y?> Pt-Pair)
-          (make-str-y-a Str)
-          (make-str-x-a Str 'a))
-      (make-str-x-b Str)))
-}#
