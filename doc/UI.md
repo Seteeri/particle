@@ -452,7 +452,7 @@ Command keys are based on spatial relationship, aka physically group related fun
     +---+---------------------------------+-------------------------------+
     | S | (c (d) e) -> (c ((d)) e)        | (c d e) -> (c (d e))          |
     +---+---------------------------------+-------------------------------+
-    |   | # -> X (N/A)                    | # -> X (N/A)                  |
+    |   | # -> X (N/A)                    | # -> X                        |
     |   |                                 |                               |
     |   |                                 |       *                       |
     |   |                                 | [ ]  [ ] .  ->  [ ]           |
@@ -463,21 +463,28 @@ Command keys are based on spatial relationship, aka physically group related fun
     |   |                                 |                               |
     |   |                                 |                  .            |
     |   |                                 |                               |
-    |   |                                 | # watch lines                 |
+    |   |                                 | # note for CDR line           |
+    |   |                                 | # and X pair on line?         |
     | X +---------------------------------+-------------------------------+
     |   | # -> Y (N/A)                    | # -> Y                        |
-    |   | preceding pair always Y         |                               |
+    |   |                                 |                               |
+    |   | preceding pair always Y         | [x] .  ->  [x] .              |
+    |   |                                 |  *          *                 |
+    |   |                                 | [y] .      [y]  [y] .         |
+    |   |                                 |  .               .            |
+    |   |                                 |                               |
+    |   |                                 |             .                 |
+    |   |                                 |                               |
     +---+---------------------------------+-------------------------------+
     |   | # -> X                          | # -> X                        |
     |   |                                 |                               |
     |   |       *               *         | [y] .  ->  [y] .              |
-    |   | [y]  [ ] .  ->  [y]  [y]  [ ] . |  *          *                 |
+    |   | [y]  [ ] .  ->  [y]  [y]  [ ] . |  *               *            |
     |   |       .               .    .    | [ ] .      [y]  [ ] .         |
     |   |                                 |  .               .            |
     |   |  .               .              |                               |
     |   |                                 |             .                 |
     |   |                                 |                               |
-    |   | # poss repl with X-Pair inst.   | # poss repl with X-Pair inst. |
     | Y +---------------------------------+-------------------------------+
     |   | # -> Y                          | # -> Y                        |
     |   |                                 |                               |
@@ -488,7 +495,7 @@ Command keys are based on spatial relationship, aka physically group related fun
     |   |  .                              |  .               .            |
     |   |                       .         |                               |
     |   |                                 |             .                 |
-    |   |                  .              | # same as X-P=Y-P             |
+    |   |                  .              |                               |
     |   |                                 |                               |
     +---+---------------------------------+-------------------------------+
 
@@ -496,7 +503,10 @@ Command keys are based on spatial relationship, aka physically group related fun
 
     ATOM:
 
-    * car opts, del cur pair or del car of prev
+    * car opts:
+      * del cur pair (cur impl)
+      * del car of prev, i.e. make nil, but not entire pair (similar to typing)
+      * del car of cur, i.e. repl cur atom with nil (alt use make-nil)
 
     +---+----------------------------+---------------------------------+
     |   |             CAR            |               CDR               |

@@ -16,33 +16,48 @@
        *               *
     (a b (c d)) -> (a (b (c d)))
 
-    Gen new pair
-    Make Y layout
-    Set pair car to old pair
-    Attach prv to new pair
-    Pt to same pair
 
-      [X] [X]
-       a   b
+    Special Cases:
 
-      [Y] [X] NIL
-           c
+        *
+      x x
 
-      NIL
+      y x
+
+      x
 
 
-      [X]
-       a
 
-      [Y] [X]
-           b
+      x
 
-          [Y] [X] NIL
-               c
+        *
+      y x
 
-          NIL
+        y x
 
-      NIL
+        x
+
+      x
+
+      ############
+
+      x x x
+
+      *
+      y x
+
+      x
+
+
+
+      x x x
+
+        *
+      y y x
+
+        x
+
+      x
 
   }#
 
@@ -58,21 +73,27 @@
     (set-lay> Pt-Cons 'y)
 
     (put Ln 'line 'n Pt-Cons)
+
     (put Pt-Cons 'line (new '(+Line) Ln Pt-Cdr))
     (put Pt-Cdr 'line (new '(+Line) Pt-Cons NIL))
 
     (con> Pt-B Cons Pt-Cons)
+
     (set> Pt-Cons C Pt-C 'del) # del car
 
     # if C-cdr has line, must reconnect line
-    (if Pt-Ln-N
-        (con-line Pt-C Pt-Ln-N)
-        (when (= Ln Pt-C) (lns> *ptr)))
+    (when Pt-Ln-N
+      (con-line Pt-C Pt-Ln-N))
 
     # Draw main tree, then ptr
 
     (lay-*start)
 
+    # only X->X does not pop
+    # since newline appended to cur
+    (unless (and (lay-x?> Pt-B)
+                 (lay-x?> Pt-C))
+      (lns> *ptr))
     (lns> *ptr Pt-Cons)
     (lns> *ptr Pt-C)
 
@@ -85,100 +106,9 @@
     (draw> *ptr)))
 
 
-(de make-pair-b-pair-old (Pt-B Pt-C)
-
-  (println 'make-pair-b-pair)
-
-  (let (C (get Pt-C 'any)
-        Cons (cons)
-        Pt-Cons (gen-point Cons 'x NIL T)
-        Pt-Cdr (get Pt-Cons 'b)
-        Ln (c-lns> *ptr))
-
-    (set-lay> Pt-Cons 'y)
-    (put Pt-Cons 'line (new '(+Line) Ln Pt-Cdr))
-    (put Pt-Cdr 'line (new '(+Line) Pt-Cons NIL))
-
-    (con> Pt-B Cons Pt-Cons)
-    (set> Pt-Cons C Pt-C 'del)
-
-    # Still pt to og pair
-    # must upd any
-    (with *ptr
-      (=: any Cons)
-      (=: reg 'a))
-
-    (lay-*start)
-
-    # push new, then C
-    # pop old as needed
-    (when (= Ln Pt-C) (lns> *ptr))
-    (lns> *ptr Pt-Cons)
-    (lns> *ptr Pt-C)
-
-    (top-ref> *ptr)
-    (draw> *ptr)))
-
-
 (de make-pair-a-pair (Pt-B Pt-C)
 
   #{
-
-    Replace pair with pair.car=pair
-
-    Later output X-Pair
-
-    Case 1:
-
-        [X]
-         .
-
-               *
-        [Y1]  [X1]  .
-               .
-
-        [X]  .
-         .
-
-      -->
-
-        [X]
-         .
-
-                     *
-        [Y1]  [Y2]  [X1]  .
-                     .
-               .
-
-        [X]  .
-         .
-
-    Case 2:
-
-
-        [X]
-         .
-
-               *
-        [Y1]  [Y2]  .
-               .
-
-        [X]  .
-         .
-
-      -->
-
-
-        [X]
-         .
-
-               *
-        [Y1]  [Y3]  [Y2]  .
-                     .
-               .
-
-        [X]  .
-         .
 
   }#
 
@@ -192,17 +122,13 @@
     (set-lay> Pt-Cons 'y)
 
     # no p ln since this always car of y pair
+
     (put Pt-Cons 'line (new '(+Line) NIL Pt-Cdr))
     (put Pt-Cdr 'line (new '(+Line) Pt-Cons NIL))
 
     (set> Pt-B Cons Pt-Cons)
-    (set> Pt-Cons C Pt-C 'del)
 
-    # Still pt to og pair
-    # must upd any
-    (with *ptr
-      (=: any Cons)
-      (=: reg 'a))
+    (set> Pt-Cons C Pt-C 'del)
 
     (lay-*start)
 
@@ -210,6 +136,12 @@
     (lns> *ptr)
     (lns> *ptr Pt-Cons)
     (lns> *ptr Pt-C)
+
+    # Still pt to og pair
+    # must upd any
+    (with *ptr
+      (=: any Cons)
+      (=: reg 'a))
 
     (top-ref> *ptr)
     (draw> *ptr)))
