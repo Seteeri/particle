@@ -25,8 +25,7 @@
         # since line is removed
         # remove line from C
        (del-line Pt-C)
-       (pop-line Pt-B)
-       (lns> *ptr))
+       (pop-line Pt-B))
 
       ((or (= Reg-B 'a) (lay-y?> Pt-B))
         # ...

@@ -29,6 +29,7 @@ TODO
       * pair: done
       * bsp: done
       * del: done
+        * more test
       * line: partial
         * fix it
       * alt/reg:
