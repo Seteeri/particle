@@ -9,19 +9,15 @@
 
     (cond
 
+      # fn format
+      # cmd-layb-layc
+
       ((isa '+Atom Pt-C)
-
-        # fn format
-        # cmd-layb-layc
-
-        (cond
-
-          ((= Reg-C 'a) (bsp-xy-a Pt-A Pt-B Pt-C Reg-B))
-          ((and (lay-x?> Pt-B) (= Reg-C 'b)) (bsp-x-b Pt-A Pt-B Pt-C Reg-B))
-          ((and (lay-y?> Pt-B) (= Reg-C 'b)) (bsp-y-b Pt-A Pt-B Pt-C))))
+        (if (= Reg-C 'a)
+            (bsp-xy-a Pt-A Pt-B Pt-C))
+            (bsp-xy-b Pt-A Pt-B Pt-C Reg-B))
 
       ((isa '+Pair Pt-C)
-
         (bsp-pair Pt-A Pt-B Pt-C Reg-A Reg-B Reg-C))
 
       (T
@@ -88,54 +84,13 @@
 
 # atom
 
-(de bsp-xy-a (Pt-A Pt-B Pt-C Reg-B)
+(de bsp-xy-a (Pt-A Pt-B Pt-C)
   # Replace Pt-A car with NIL
   # This will update ptr and handle lines
   (make-str-x-a NIL 'a Pt-A (get Pt-A 'a)'skip-mov))
 
 
-(de bsp-x-a-2 (Pt-A Pt-B Pt-C Reg-B)
-
-  # expected behavior: del "prev" link
-  # NEED ALT to test properly
-
-  (println 'bsp-x-a)
-
-  (when (get Pt-B 'line)
-    (pop-line Pt-B)
-    (lns> *ptr))
-
-  # Con A-B->CDR
-  #   Dep if Reg-B is a/b
-
-  # B could be pair or atom
-  # X pair line: opt
-  # Y pair line: always
-
-  (let (BB (cdr (get Pt-B 'any))
-        Pt-BB (if (pair BB)
-                  (lup-pt @)
-                  (get Pt-B 'b)))
-
-    (if (= Reg-B 'a)
-        (set> Pt-A (get Pt-BB 'any) Pt-BB)
-        (con> Pt-A (get Pt-BB 'any) Pt-BB))
-
-    (set-ln-n> *ptr Pt-BB))
-
-  # pt to BB
-  (pt> *ptr (get Pt-A 'any) Reg-B 'draw 'col)
-
-  # mov to prev car
-  (sub> *ptr T)
-
-  # instead of sub>, just pt>
-
-  # del last
-  (del> Pt-B T NIL))
-
-
-(de bsp-x-b (Pt-A Pt-B Pt-C Reg-B)
+(de bsp-xy-b (Pt-A Pt-B Pt-C Reg-B)
 
   # if B has line, pop it
   # auto link A -> C
@@ -160,7 +115,4 @@
   # can set any directly
   (with *ptr
     (=: any (get Pt-A 'any))
-    (=: reg Reg-B)))
-
-
-(de bsp-y-b (Pt-A Pt-B Pt-C))
+    (=: reg Reg-B)))'

@@ -518,6 +518,7 @@ Command keys are based on spatial relationship, aka physically group related fun
       * cel cur pair
       * del car of prev
         * does this make sense?
+        * DO THIS for consistency
       * del car of cur
         * redundant
 

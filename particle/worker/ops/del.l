@@ -146,3 +146,45 @@
        (pt> *ptr Cdr 'b)))
 
     Pt-Cdr))
+
+
+# DEL CUR
+(de del-pair-2 (Pt-A Pt-B Pt-C Reg-B)
+
+  # expected behavior: del "prev" link
+  # NEED ALT to test properly
+
+  (println 'bsp-x-a)
+
+  (when (get Pt-B 'line)
+    (pop-line Pt-B)
+    (lns> *ptr))
+
+  # Con A-B->CDR
+  #   Dep if Reg-B is a/b
+
+  # B could be pair or atom
+  # X pair line: opt
+  # Y pair line: always
+
+  (let (BB (cdr (get Pt-B 'any))
+        Pt-BB (if (pair BB)
+                  (lup-pt @)
+                  (get Pt-B 'b)))
+
+    (if (= Reg-B 'a)
+        (set> Pt-A (get Pt-BB 'any) Pt-BB)
+        (con> Pt-A (get Pt-BB 'any) Pt-BB))
+
+    (set-ln-n> *ptr Pt-BB))
+
+  # pt to BB
+  (pt> *ptr (get Pt-A 'any) Reg-B 'draw 'col)
+
+  # mov to prev car
+  (sub> *ptr T)
+
+  # instead of sub>, just pt>
+
+  # del last
+  (del> Pt-B T NIL))
