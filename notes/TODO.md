@@ -16,23 +16,21 @@ TODO
 
   * Rewrite pointer to store any/reg
     * Refactor (after tests)
-      * Refactor mak-pair-x-a, ins-line-aft
       * set should create line as needed (done)
-      * make mov+del+pop line fn
       * remove uncol from pt>
       * Mov trace to point
       * refactor con/set to not req any
       * move lay dependent stuff to methods
+      * set lines need to be consistent
+        * direct push/pop vs set-ln-nxt
     * Finish bootstrap ops/cmds
-      * str: done...
-      * pair: done...
-      * bsp: SAT
-        * y car
-      * create test for each case
+      * str: done
+      * pair: done
+      * bsp: done
+      * del: done
       * line: partial
         * fix it
-      * alt:
-      * del: based on del
+      * alt/reg:
 
   * Tests
 

@@ -19,13 +19,12 @@
 
         (prog
 
-          #(ins-line-aft Pt-Ln Pt-Tgt)
+          (ins-line-aft Pt-Ln Pt-Tgt)
 
-          (unless (get Pt-Tgt 'line)
-            (put Pt-Tgt 'line
-              (new '(+Line) Ln Pt-Ln-Nxt)))
-
-          (con-line Pt-Ln Pt-Tgt)
+          #(unless (get Pt-Tgt 'line)
+          #  (put Pt-Tgt 'line
+          #    (new '(+Line) Ln Pt-Ln-Nxt)))
+          #(con-line Pt-Ln Pt-Tgt)
 
           (lay-*start)
 

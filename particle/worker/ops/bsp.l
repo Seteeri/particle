@@ -87,7 +87,7 @@
 (de bsp-xy-a (Pt-A Pt-B Pt-C)
   # Replace Pt-A car with NIL
   # This will update ptr and handle lines
-  (make-str-x-a NIL 'a Pt-A (get Pt-A 'a)'skip-mov))
+  (make-str-x-a NIL 'a Pt-A (get Pt-A 'a) 'skip-mov))
 
 
 (de bsp-xy-b (Pt-A Pt-B Pt-C Reg-B)
