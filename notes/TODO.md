@@ -22,13 +22,14 @@ TODO
       * remove uncol from pt>
       * Mov trace to point
       * refactor con/set to not req any
+      * move lay dependent stuff to methods
     * Finish bootstrap ops/cmds
       * str: done...
-      * list: done...
-        * fix: make pair in middle, go to prev, make pair again
-      * bsp: THURS
+      * pair: done...
+      * bsp: SAT
       * create test for each case
       * line: partial
+        * fix it
       * alt:
       * del: based on del
 

@@ -29,7 +29,7 @@
 
         (cond
 
-          ((and (lay-x?> Pt-B) (= Reg-C 'b)) (bsp-xb-xy Pt-A Pt-B Pt-C))
+          ((and (lay-x?> Pt-B) (= Reg-C 'b)) (bsp-xb-xy Pt-A Pt-B Pt-C Reg-A Reg-B Reg-C))
 
           ((and (lay-y?> Pt-B) (= Reg-C 'a) (lay-x?> Pt-C)) (bsp-ya-x Pt-A Pt-B Pt-C))
           ((and (lay-y?> Pt-B) (= Reg-C 'b) (lay-x?> Pt-C)) (bsp-yb-x Pt-A Pt-B Pt-C))
@@ -54,26 +54,37 @@
 # 2 makes more sense
 # Use explicit cmd to del line (formatting)
 
-(de bsp-xb-xy (Pt-A Pt-B Pt-C)
+(de bsp-xb-xy (Pt-A Pt-B Pt-C Reg-A Reg-B Reg-C)
 
   # use bsp-x-b?
 
+  # crash when
+  #         *
+  # y - x - x
+
+  (println 'bsp-xb-xy)
+
+  # If A ir Y pair and B has a line, move it
+  # else remove it
   (when (get Pt-B 'line)
-    (pop-line Pt-B)
-    (lns> *ptr))
+    (if (= Reg-B 'a)
+        (mov-line Pt-B Pt-C)
+        (pop-line Pt-B)
+        (lns> *ptr)))
 
   # del B with car, keep cdr
   (del> Pt-B T NIL)
 
   # con A -> C
-  (con> Pt-A (get Pt-C 'any) Pt-C)
+  (if (= Reg-B 'a)
+      (set> Pt-A (get Pt-C 'any) Pt-C)
+      (con> Pt-A (get Pt-C 'any) Pt-C))
 
   # ptr moves, but ref is the same
   # update ptr
   (with *ptr
     (=: any (get Pt-A 'any))
-    (=: reg 'b)))
-
+    (=: reg Reg-B)))
 
 (de bsp-ya-x (Pt-A Pt-B Pt-C)
   # bsp-x-a
