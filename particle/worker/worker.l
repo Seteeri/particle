@@ -79,20 +79,23 @@
 
             "/particle/worker/ops/align.l"
             "/particle/worker/ops/lay.l"
-            "/particle/worker/ops/bsp.l"
             "/particle/worker/ops/del.l"
             "/particle/worker/ops/line.l"
             "/particle/worker/ops/alt-lay.l"
             "/particle/worker/ops/alt-reg.l"
             "/particle/worker/ops/conv.l"
 
-            "/particle/worker/ops/str/make.l"
+            "/particle/worker/ops/str/str.l"
             "/particle/worker/ops/str/pair.l"
             "/particle/worker/ops/str/atom.l"
 
-            "/particle/worker/ops/pair/make.l"
-            "/particle/worker/ops/pair/pair.l"
-            "/particle/worker/ops/pair/atom.l"
+            "/particle/worker/ops/list/list.l"
+            "/particle/worker/ops/list/pair.l"
+            "/particle/worker/ops/list/atom.l"
+
+            "/particle/worker/ops/bsp/bsp.l"
+            "/particle/worker/ops/bsp/pair.l"
+            "/particle/worker/ops/bsp/atom.l"
 
             # MOV -> TEST.L
 
