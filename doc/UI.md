@@ -516,11 +516,20 @@ Command keys are based on spatial relationship, aka physically group related fun
 
     * y car opts:
       * del cur pair
-      * del car of prev
-        * does this make sense?
-        * DO THIS for consistency
+        * targeting atom, not pair
+        * cdr is diff...then this cmd is effectively "bsp cdr"
       * del car of cur
         * redundant -> make-nil
+      * del prv pair
+        * then what is the point of going into car mode? typing...
+        which is why do nothing makes sense since its start of a "line"
+        * user can explicitly delete the pair if they want
+      * del car of prev
+        * does this make sense? consistent...
+      * do nothing
+        * making it nil seems better than nothing?
+      * del pair car, leave cdr
+        * matches car x i suppose...
 
     +---+----------------------------+---------------------------------+
     |   |             CAR            |               CDR               |
@@ -553,11 +562,13 @@ Command keys are based on spatial relationship, aka physically group related fun
       essentially becomes "bsp x pair only", behaves like text
       * del y car atom...turns into x layout and deletes cdr
       * use del on y cdr to del cdr
+
     * for y car x, keep line opt?
       * if del line, user can use make-line to restore it
       * if line was kept and opp wanted no ln, use bsp-line
       * del line makes sense...since user tends to see it as
       part of y pair?
+
     * for y car y, could attach prev cdr to chain them as you del
       * could be separate cmd like bsp-app
       * would be used for y car x also

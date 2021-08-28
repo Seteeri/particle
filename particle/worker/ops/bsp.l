@@ -13,9 +13,13 @@
       # cmd-layb-layc
 
       ((isa '+Atom Pt-C)
-        (if (= Reg-C 'a)
-            (bsp-xy-a Pt-A Pt-B Pt-C)
-            (bsp-xy-b Pt-A Pt-B Pt-C Reg-B)))
+        (cond
+          ((and (lay-x?> Pt-B) (= Reg-C 'a))
+            (bsp-x-a Pt-A Pt-B Pt-C))
+          ((and (lay-y?> Pt-B) (= Reg-C 'a))
+            (bsp-y-a Pt-A Pt-B Pt-C))
+          (T
+            (bsp-xy-b Pt-A Pt-B Pt-C Reg-B))))
 
       ((isa '+Pair Pt-C)
         (bsp-pair Pt-A Pt-B Pt-C Reg-A Reg-B Reg-C))
@@ -91,12 +95,26 @@
 
 # atom
 
-(de bsp-xy-a (Pt-A Pt-B Pt-C)
+
+(de bsp-x-a (Pt-A Pt-B Pt-C)
+
+  # this will make prv pair nil
+  # will not work properly with y
 
   (println 'bsp-xy-a)
 
   # Replace Pt-A car -> NIL
   # Pt to Pt-A car
+
+  # Handle case:
+  # x x
+  # . .
+  #
+  #   * [NIL]
+  # y x   x .
+  #   NIL .
+  #
+  # .
 
   (let Pt-Str (gen-point NIL 'x NIL T)
 
@@ -107,10 +125,41 @@
     (pt> *ptr (get Pt-A 'any) 'a 'draw 'col)))
 
 
-(de bsp-xy-b (Pt-A Pt-B Pt-C Reg-B)
+(de bsp-y-a (Pt-A Pt-B Pt-C)
 
-  #             *
-  # crash on Y NIL
+  (println 'bsp-y-a)
+
+  # A=Pair
+  # Reg-B=X/Y
+  # B=Y-Pair
+  # C=atom <- ptr
+
+  # Con A-B-Cdr
+  # Del A+car
+
+  (del-line Pt-C)
+  (lns> *ptr)
+  (del-line Pt-B)
+  (lns> *ptr)
+
+  # del it with car, skip cdr
+  (del> Pt-B T NIL)
+
+  (let (BB (cdr (get Pt-B 'any))
+        Pt-BB (if (pair BB)
+                  (lup-pt @)
+                  (get Pt-B 'b))
+        Ln (c-lns> *ptr)) # ln before Y
+
+      (con> Pt-A (get Pt-BB 'any) Pt-BB)
+      (app-line Ln Pt-BB)
+      (set-ln-n> *ptr Pt-BB))
+
+  # Pt to Pt-A car
+  (pt> *ptr (get Pt-A 'any) 'b 'draw 'col))
+
+
+(de bsp-xy-b (Pt-A Pt-B Pt-C Reg-B)
 
   (println 'bsp-xy-b)
 
@@ -137,4 +186,4 @@
   # can set any directly
   (with *ptr
     (=: any (get Pt-A 'any))
-    (=: reg Reg-B)))'
+    (=: reg Reg-B)))
