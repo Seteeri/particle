@@ -56,12 +56,6 @@
 
 (de bsp-xb-xy (Pt-A Pt-B Pt-C Reg-A Reg-B Reg-C)
 
-  # use bsp-x-b?
-
-  # crash when
-  #         *
-  # y - x - x
-
   (println 'bsp-xb-xy)
 
   # If A ir Y pair and B has a line, move it
@@ -86,22 +80,20 @@
     (=: any (get Pt-A 'any))
     (=: reg Reg-B)))
 
+
 (de bsp-ya-x (Pt-A Pt-B Pt-C)
-  # bsp-x-a
   (println 'bsp-ya-x "TODO"))
 
+
 (de bsp-ya-y (Pt-A Pt-B Pt-C)
-  # similar to bsp-x-b - del prev
   (println 'bsp-ya-y "TODO"))
 
 
 (de bsp-yb-x (Pt-A Pt-B Pt-C)
-  # similar to bsp-x-b - del prev
   (println 'bsp-yb-x "TODO"))
 
 
 (de bsp-yb-y (Pt-A Pt-B Pt-C)
-  # similar to bsp-x-b - del prev
   (println 'bsp-xb-y "TODO"))
 
 # atom

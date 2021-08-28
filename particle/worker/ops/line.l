@@ -3,19 +3,15 @@
 (de make-line ()
 
   # Only applies to X Pair Cdr
-  # X Pair Car can have a line but only applies to lists
-  # If arbitrarily done, would break consistency...
 
-  #(let (Pt-Tgt (if (get *ptr 'pair)
-  #                 (get *ptr 'ref)
-  #                 (lup-pt (get *ptr 'ref)))
-  #      Ln (c-lns> *ptr))
+  # Add line to cur line
 
   (let ((C Pt-Tgt Reg-C
          B Pt-B Reg-B
          A Pt-A)
         (refs-2> *ptr)
-       Ln (c-lns> *ptr))
+       Pt-Ln (c-lns> *ptr)
+       Pt-Ln-Nxt (get Pt-Ln 'line 'n))
 
     (if (get Pt-Tgt 'line)
 
@@ -23,7 +19,13 @@
 
         (prog
 
-          (ins-line-aft Ln Pt-Tgt)
+          #(ins-line-aft Pt-Ln Pt-Tgt)
+
+          (unless (get Pt-Tgt 'line)
+            (put Pt-Tgt 'line
+              (new '(+Line) Ln Pt-Ln-Nxt)))
+
+          (con-line Pt-Ln Pt-Tgt)
 
           (lay-*start)
 
