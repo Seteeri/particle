@@ -49,11 +49,11 @@
   (println 'make-pair-b-pair)
 
   (let (C (get Pt-C 'any)
-        Pt-C-Cdr (lup-pt (cdr C))
         Cons (cons)
         Pt-Cons (gen-point Cons 'x NIL T)
         Pt-Cdr (get Pt-Cons 'b)
-        Ln (c-lns> *ptr))
+        Ln (c-lns> *ptr)
+        Pt-Ln-N (get Ln 'line 'n))
 
     (set-lay> Pt-Cons 'y)
 
@@ -65,8 +65,8 @@
     (set> Pt-Cons C Pt-C 'del) # del car
 
     # if C-cdr has line, must reconnect line
-    (if (get Pt-C-Cdr 'line)
-        (con-line Pt-C Pt-C-Cdr)
+    (if Pt-Ln-N
+        (con-line Pt-C Pt-Ln-N)
         (when (= Ln Pt-C) (lns> *ptr)))
 
     # Draw main tree, then ptr
