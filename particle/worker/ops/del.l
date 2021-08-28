@@ -50,7 +50,7 @@
       (if (lay-x?> Pt-C)
           (mov-line Pt-C Pt-CC)
           (pop-line Pt-C)
-          (con-line Ln-Prv Pt-CC))
+          (app-line Ln-Prv Pt-CC))
       # cur line changes so pop cur line
       (lns> *ptr)
       # set new line to CC
@@ -110,7 +110,7 @@
     # if B is X, con line
     (when (lay-x?> Pt-B)
       # Con creating line for X pair
-      (con-line Ln-Prv Pt-CC))
+      (app-line Ln-Prv Pt-CC))
 
     (if (= Reg-C 'a)
         (set> Pt-B (get Pt-CC 'any) Pt-CC)

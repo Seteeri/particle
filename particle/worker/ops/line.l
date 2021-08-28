@@ -19,12 +19,7 @@
 
         (prog
 
-          (ins-line-aft Pt-Ln Pt-Tgt)
-
-          #(unless (get Pt-Tgt 'line)
-          #  (put Pt-Tgt 'line
-          #    (new '(+Line) Ln Pt-Ln-Nxt)))
-          #(con-line Pt-Ln Pt-Tgt)
+          (app-line Pt-Ln Pt-Tgt)
 
           (lay-*start)
 
@@ -34,27 +29,34 @@
           (set-ln-n> *ptr Pt-Tgt)))))
 
 
-(de ins-line-aft (Ln Po)
+(de app-line (A-Pt B-Pt)
 
-  (let Nxt (get Ln 'line 'n)
+  # Ensures B-Pt has 'line
+  # Ensures next line links back also
 
-    (unless (get Po 'line)
-      (put Po 'line
+  # Y pair cannot have prev line
+  # only next
+
+  (let Nxt (get A-Pt 'line 'n)
+
+    (unless (get B-Pt 'line)
+
+      (put B-Pt 'line
         (new '(+Line)
-              Ln
-              (unless (= Nxt Po) Nxt))))
+              A-Pt
+              (unless (= Nxt B-Pt) Nxt))))
 
-    (if Ln
+    (if A-Pt
 
         (prog
-          (put Ln 'line 'n Po)
+          (put A-Pt 'line 'n B-Pt)
           (when Nxt
-            (unless (= Nxt Po)
-              (put Nxt 'line 'p Po))))
+            (unless (= Nxt B-Pt)
+              (put Nxt 'line 'p B-Pt))))
 
         # Start of line
-        (let? Nxt (get Ln 'line 'n)
-          (put Ln 'line 'n Po)))))
+        (let? Nxt (get A-Pt 'line 'n)
+          (put A-Pt 'line 'n B-Pt)))))
 
 
 (de con-line (A-Pt B-Pt)

@@ -64,12 +64,12 @@
       # B poss has line, else create
       (if (get Pt-B 'line)
           (put @ 'n Pt-Cdr)
-          (ins-line-aft (c-lns> *ptr) Pt-B))
+          (app-line (c-lns> *ptr) Pt-B))
 
       # same as above
       (if (get Pt-Cdr 'line)
           (put @ 'p Pt-B)
-          (ins-line-aft Pt-B Pt-Cdr))
+          (app-line Pt-B Pt-Cdr))
 
       (pt> *ptr Ls 'a)
 
