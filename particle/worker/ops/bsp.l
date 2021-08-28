@@ -95,9 +95,16 @@
 
   (println 'bsp-xy-a)
 
-  # Replace Pt-A car with NIL
-  # This will update ptr and handle lines
-  (make-str-x-a NIL 'a Pt-A (get Pt-A 'a) 'skip-mov))
+  # Replace Pt-A car -> NIL
+  # Pt to Pt-A car
+
+  (let Pt-Str (gen-point NIL 'x NIL T)
+
+    # Set new car, del old one
+    (set> Pt-A NIL Pt-Str T)
+
+    # Pt to Pt-A car
+    (pt> *ptr (get Pt-A 'any) 'a 'draw 'col)))
 
 
 (de bsp-xy-b (Pt-A Pt-B Pt-C Reg-B)

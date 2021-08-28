@@ -515,12 +515,12 @@ Command keys are based on spatial relationship, aka physically group related fun
       * verdict = DEL CAR OF PREV, i.e. replace with NIL and pt to it
 
     * y car opts:
-      * cel cur pair
+      * del cur pair
       * del car of prev
         * does this make sense?
         * DO THIS for consistency
       * del car of cur
-        * redundant
+        * redundant -> make-nil
 
     +---+----------------------------+---------------------------------+
     |   |             CAR            |               CDR               |

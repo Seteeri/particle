@@ -1,4 +1,37 @@
-(de make-str-x-a (Str Reg-C Pt-B Pt-C Mov)
+(de make-str-x-a (Str Reg-B Pt-A Pt-B Mov)
+
+  (println 'make-str-x-a)
+
+  (let (A (get Pt-A 'any)
+        Pt-Str (gen-point Str 'x NIL T))
+
+    (if (= Reg-B 'a)
+        (set> Pt-A Str Pt-Str T)
+        (con> Pt-A Str Pt-Str T))
+
+    (when (get Pt-B 'line)
+      (mov-line Pt-B Pt-Str)
+      (lns> *ptr))
+    (set-ln-n> *ptr Pt-Str)
+
+    # use pt to col ref also
+    # new pt does not have 'col
+    # so warning will print
+    (pt> *ptr A Reg-B 'draw 'col)
+
+    (lay-*start)
+
+    # Move to next car
+    (unless Mov # set T to skip
+      (when (and (pair A)
+                (pair (cdr A))
+                (atom (car @)))
+        (sup> *ptr)
+        (nex> *ptr)
+        (sub> *ptr T)))))
+
+
+(de make-str-x-a-2 (Str Reg-C Pt-B Pt-C Mov)
 
   (println 'make-str-x-a)
 
