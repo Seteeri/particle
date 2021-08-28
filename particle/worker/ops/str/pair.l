@@ -146,10 +146,10 @@
       (put Pt-B 'line 'n NIL)
       (put Pt-Ls 'line 'p NIL))
 
+    (lay-*start)
+
     # Pop cur line (Pt-C), push new list
     (lns> *ptr) (lns> *ptr Pt-Ls)
-
-    (lay-*start)
 
     # Need new fn
     (uncol> *ptr Pt-C T)
@@ -245,12 +245,12 @@
       (lns> *ptr))
     (set-ln-n> *ptr Pt-Ls)
 
+    (lay-*start)
+
     # same ref
     (with *ptr
       (=: any Ls)
       (=: reg 'b))
-
-    (lay-*start)
 
     (top-ref> *ptr)
     (draw> *ptr)))

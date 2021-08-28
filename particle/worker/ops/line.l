@@ -56,6 +56,12 @@
           (put Ln 'line 'n Po)))))
 
 
+(de con-line (A-Pt B-Pt)
+  ~(assert (not (= A-Pt B-Pt)))
+  (put A-Pt 'line 'n B-Pt)
+  (put B-Pt 'line 'p A-Pt))
+
+
 (de del-line (Po)
   (pop-line Po)
   (put Po 'line NIL))

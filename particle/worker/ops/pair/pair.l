@@ -11,75 +11,81 @@
 (de make-pair-b-pair (Pt-B Pt-C)
   #{
 
-    Make list with list
+    Cons pair
 
-    Case 1: No line
+       *               *
+    (a b (c d)) -> (a (b (c d)))
 
-             *
-      [X1]  [X2]  [X3]  [X4]  .
-       .     .     .     .
+    Gen new pair
+    Make Y layout
+    Set pair car to old pair
+    Attach prv to new pair
+    Pt to same pair
 
-      ->
+      [X] [X]
+       a   b
 
-      [X1]
-            *
-      [Y]  [X2]  ...
-            .
+      [Y] [X] NIL
+           c
 
-      .
-
-
-    Case 2: Yes line, no p
-
-       *
-      [X1]  [X2]  [X3]  [X4]  .
-       .     .     .     .
-
-      ->
-
-            *
-      [Y]  [X1]  ...
-            .
-
-      .
+      NIL
 
 
-    Case 3: Yes line, yes p
+      [X]
+       a
 
-      [Y1]
+      [Y] [X]
+           b
 
-       *
-      [X2]  [X3]  [X4]  .
-       .     .     .
+          [Y] [X] NIL
+               c
 
-      ->
+          NIL
 
-      [Y1]
-             *
-      [Y2]  [X2]  ...
-             .
-
-      .
-
-
-    Case 4: Yes line, yes p
-
-      [X1]
-
-       *
-      [X2]  [X3]  [X4]  .
-       .     .     .
-
-      ->
-
-      [X1]
-            *
-      [Y]  [X2]  ...
-            .
-
-      .
+      NIL
 
   }#
+
+  (println 'make-pair-b-pair)
+
+  (let (C (get Pt-C 'any)
+        Pt-C-Cdr (lup-pt (cdr C))
+        Cons (cons)
+        Pt-Cons (gen-point Cons 'x NIL T)
+        Pt-Cdr (get Pt-Cons 'b)
+        Ln (c-lns> *ptr))
+
+    (set-lay> Pt-Cons 'y)
+
+    (put Ln 'line 'n Pt-Cons)
+    (put Pt-Cons 'line (new '(+Line) Ln Pt-Cdr))
+    (put Pt-Cdr 'line (new '(+Line) Pt-Cons NIL))
+
+    (con> Pt-B Cons Pt-Cons)
+    (set> Pt-Cons C Pt-C 'del) # del car
+
+    # if C-cdr has line, must reconnect line
+    (if (get Pt-C-Cdr 'line)
+        (con-line Pt-C Pt-C-Cdr)
+        (when (= Ln Pt-C) (lns> *ptr)))
+
+    # Draw main tree, then ptr
+
+    (lay-*start)
+
+    (lns> *ptr Pt-Cons)
+    (lns> *ptr Pt-C)
+
+    # Still pt to C
+    (with *ptr
+      (=: any Cons)
+      (=: reg 'a))
+
+    (top-ref> *ptr)
+    (draw> *ptr)))
+
+
+(de make-pair-b-pair-old (Pt-B Pt-C)
 
   (println 'make-pair-b-pair)
 

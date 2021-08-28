@@ -1058,6 +1058,29 @@ lines interact with spatial indexing
 each line tracks its bounds
 and each list tracks all the lines
 
+
+  [X] [X]
+   a   b
+
+  [Y] [X] NIL
+       c
+
+  NIL
+
+
+  [X]
+   a
+
+  [Y] [X]
+       b
+
+      [Y] [X] NIL
+           c
+
+      NIL
+
+  NIL
+
 ============================================
 ============================================
 
