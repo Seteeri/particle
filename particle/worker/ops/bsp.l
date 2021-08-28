@@ -16,10 +16,8 @@
 
         (cond
 
-          ((and (lay-x?> Pt-B) (= Reg-C 'a)) (bsp-x-a Pt-A Pt-B Pt-C Reg-B))
+          ((= Reg-C 'a) (bsp-xy-a Pt-A Pt-B Pt-C Reg-B))
           ((and (lay-x?> Pt-B) (= Reg-C 'b)) (bsp-x-b Pt-A Pt-B Pt-C Reg-B))
-
-          ((and (lay-y?> Pt-B) (= Reg-C 'a)) (bsp-y-a Pt-A Pt-B Pt-C))
           ((and (lay-y?> Pt-B) (= Reg-C 'b)) (bsp-y-b Pt-A Pt-B Pt-C))))
 
       ((isa '+Pair Pt-C)
@@ -90,7 +88,7 @@
 
 # atom
 
-(de bsp-x-a (Pt-A Pt-B Pt-C Reg-B)
+(de bsp-xy-a (Pt-A Pt-B Pt-C Reg-B)
   # Replace Pt-A car with NIL
   # This will update ptr and handle lines
   (make-str-x-a NIL 'a Pt-A (get Pt-A 'a)'skip-mov))
@@ -163,13 +161,6 @@
   (with *ptr
     (=: any (get Pt-A 'any))
     (=: reg Reg-B)))
-
-
-# car opts:
-# * del cur pair (cur impl)
-# * del car of prev, i.e. make nil, but not entire pair (similar to typing)
-# * del car of cur, i.e. repl cur atom with nil (alt use make-nil)
-(de bsp-y-a (Pt-A Pt-B Pt-C))
 
 
 (de bsp-y-b (Pt-A Pt-B Pt-C))

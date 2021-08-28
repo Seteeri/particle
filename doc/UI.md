@@ -503,7 +503,7 @@ Command keys are based on spatial relationship, aka physically group related fun
 
     ATOM:
 
-    * car opts:
+    * x car opts:
       * del cur pair (cur impl)
         * don't want two ways to do the same thing - pointless and wasteful
         * so pair car deletes entire pair
@@ -513,6 +513,13 @@ Command keys are based on spatial relationship, aka physically group related fun
       * del car of cur, i.e. repl cur atom with nil (alt use make-nil)
         * again, don't want duplicate functionality
       * verdict = DEL CAR OF PREV, i.e. replace with NIL and pt to it
+
+    * y car opts:
+      * cel cur pair
+      * del car of prev
+        * does this make sense?
+      * del car of cur
+        * redundant
 
     +---+----------------------------+---------------------------------+
     |   |             CAR            |               CDR               |
