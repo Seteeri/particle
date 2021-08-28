@@ -496,6 +496,8 @@ Command keys are based on spatial relationship, aka physically group related fun
 
     ATOM:
 
+    * car opts, del cur pair or del car of prev
+
     +---+----------------------------+---------------------------------+
     |   |             CAR            |               CDR               |
     |---+----------------------------+---------------------------------+
@@ -520,8 +522,22 @@ Command keys are based on spatial relationship, aka physically group related fun
 
     PAIR:
 
-    * for y car x/y, either del y pair cdr or append it to list of y car
-      * compare to y car atom
+    * for y car x, del y cdr or append to list of y car
+      * del makes sense
+      * to append must cut list and paste before cdr
+      * could make this optional so users dont actually delete everything
+      essentially becomes "bsp x pair only", behaves like text
+      * del y car atom...turns into x layout and deletes cdr
+      * use del on y cdr to del cdr
+    * for y car x, keep line opt?
+      * if del line, user can use make-line to restore it
+      * if line was kept and opp wanted no ln, use bsp-line
+      * del line makes sense...since user tends to see it as
+      part of y pair?
+    * for y car y, could attach prev cdr to chain them as you del
+      * could be separate cmd like bsp-app
+      * would be used for y car x also
+      * not so much a del fn but append fn
 
     +---+-------------------------+-----------------------+
     |   |         CAR (A)         |         CDR (B)       |
@@ -549,6 +565,7 @@ Command keys are based on spatial relationship, aka physically group related fun
     |   |                         |                       |
     |   | [ ]            [ ]      |                       |
     |   |  .              .       |                       |
+    |   | # keep y car line?      |                       |
     | Y +-------------------------+-----------------------+
     |   | # -> Y                  | # -> Y                |
     |   |                         |                       |

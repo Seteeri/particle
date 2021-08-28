@@ -27,6 +27,7 @@ TODO
       * str: done...
       * pair: done...
       * bsp: SAT
+        * y car
       * create test for each case
       * line: partial
         * fix it

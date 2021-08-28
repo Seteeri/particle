@@ -24,17 +24,7 @@
 
       ((isa '+Pair Pt-C)
 
-        # fn format
-        # cmd-layb,regb-layc
-
-        (cond
-
-          # xb-xy, yb-x, yb-y = xyb-xy
-          ((= Reg-C 'b) (bsp-xyb-xy Pt-A Pt-B Pt-C Reg-A Reg-B Reg-C))
-
-          ((and (lay-y?> Pt-B) (= Reg-C 'a) (lay-x?> Pt-C)) (bsp-ya-x Pt-A Pt-B Pt-C))
-          ((and (lay-y?> Pt-B) (= Reg-C 'a) (lay-y?> Pt-C)) (bsp-ya-y Pt-A Pt-B Pt-C))))
-
+        (bsp-pair Pt-A Pt-B Pt-C Reg-A Reg-B Reg-C))
 
       (T
         (quit "bsp-pt: unknown cls")))
@@ -53,20 +43,39 @@
 # 2 makes more sense
 # Use explicit cmd to del line (formatting)
 
-(de bsp-xyb-xy (Pt-A Pt-B Pt-C Reg-A Reg-B Reg-C)
+(de bsp-pair (Pt-A Pt-B Pt-C Reg-A Reg-B Reg-C)
 
   (println 'bsp-xyb-xy)
 
-  # If A ir Y pair and B has a line, move it
-  # else remove it
   (when (get Pt-B 'line)
-    (if (= Reg-B 'a)
-        (mov-line Pt-B Pt-C)
-        (pop-line Pt-B)
-        (lns> *ptr)))
 
-  # del B with car, keep cdr
-  (del> Pt-B T NIL)
+    (cond
+
+      ((and (= Reg-B 'b) (lay-y?> Pt-B) (= Reg-C 'a) (lay-x?> Pt-C)) # last 2 checks needed?
+        # x
+        #   .
+        # y x
+       (pop-line Pt-B))
+
+      ((or (= Reg-B 'a) (lay-y?> Pt-B))
+        # ...
+        # y y x/y
+        #
+        # or
+        #
+        # ...
+        # y y
+        #   x/y
+        (mov-line Pt-B Pt-C))
+
+      (T
+        (pop-line Pt-B)))
+
+    (lns> *ptr))
+
+  (if (and (lay-y?> Pt-B) (= Reg-C 'a))
+      (del> Pt-B NIL T)  # del B with cdr, keep car
+      (del> Pt-B T NIL)) # del B with car, keep cdr
 
   # con A -> C
   (if (= Reg-B 'a)
@@ -78,14 +87,6 @@
   (with *ptr
     (=: any (get Pt-A 'any))
     (=: reg Reg-B)))
-
-
-(de bsp-ya-x (Pt-A Pt-B Pt-C)
-  (println 'bsp-ya-x))
-
-
-(de bsp-ya-y (Pt-A Pt-B Pt-C)
-  (println 'bsp-ya-y "TODO"))
 
 # atom
 
